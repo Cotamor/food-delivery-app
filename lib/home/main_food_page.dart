@@ -63,13 +63,9 @@ class _MainFoodPageState extends State<MainFoodPage> {
           ),
         ),
         // FoodPageBody
-        const FoodPageBody(),
-
-        Expanded(
-          child: Container(
-            width: double.infinity,
-            color: Colors.red.shade100,
-            child: const Center(child: Text('Rest of The Space')),
+        const Expanded(
+          child: SingleChildScrollView(
+            child: FoodPageBody(),
           ),
         ),
       ],

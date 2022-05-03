@@ -40,7 +40,9 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = Get.height;
+    double screenWidth = Get.width;
     print('height: $screenHeight.');
+    print('width: $screenWidth.');
     return Scaffold(
       body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_deli/Utils/colors.dart';
 import 'package:food_deli/Utils/dimentions.dart';
 
 class LargeText extends StatelessWidget {
@@ -9,7 +10,7 @@ class LargeText extends StatelessWidget {
   const LargeText({
     Key? key,
     required this.text,
-    this.color = Colors.black87,
+    this.color = AppColors.titleColor,
     this.size = 0,
     this.overflow = TextOverflow.ellipsis,
   }) : super(key: key);
@@ -22,7 +23,7 @@ class LargeText extends StatelessWidget {
       overflow: overflow,
       style: TextStyle(
         color: color,
-        fontSize: size == 0 ? Dimentions.font20 : 0,
+        fontSize: size == 0 ? Dimentions.font20 : size,
         fontWeight: FontWeight.w500,
         fontFamily: 'Roboto',
       ),

@@ -12,13 +12,19 @@ class Dimentions {
   static double height20 = screenHeight / 40.6;
   static double height30 = screenHeight / 27.1;
   static double height45 = screenHeight / 18.06;
+  static double height100 = screenHeight / 8.13;
+  static double height120 = screenHeight / 6.77;
 
   // Dynamic width padding and margin
   static double width10 = screenHeight / 81.3;
   static double width15 = screenHeight / 54.2;
   static double width20 = screenHeight / 40.6;
   static double width30 = screenHeight / 27.1;
+  static double width100 = screenHeight / 8.13;
+  static double width120 = screenHeight / 6.77;
 
+  // Font
+  static double font18 = screenHeight / 45.16;
   static double font20 = screenHeight / 40.6;
 
   // Radius
@@ -28,4 +34,8 @@ class Dimentions {
 
   // Icon size
   static double iconSize24 = screenHeight / 33.87;
+
+  // ListView size 813 x 392
+  static double listViewImgSize = screenWidth / 3.26;
+  static double listViewTextContSize = screenWidth / 3.92;
 }

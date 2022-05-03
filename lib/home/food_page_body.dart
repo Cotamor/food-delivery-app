@@ -40,6 +40,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     // double width = MediaQuery.of(context).size.width;
     return Column(
       children: [
+        // Slider Section
         SizedBox(
           height: Dimentions.pageView,
           // color: Colors.green.shade100,
@@ -51,7 +52,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             },
           ),
         ),
-        // const SizedBox(height: 10),
+        // Dots(Indicatore)
         DotsIndicator(
           dotsCount: 5,
           position: _currentPageValue,
@@ -62,6 +63,113 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             activeShape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5.0)),
           ),
+        ),
+        // Popular Text
+        SizedBox(height: Dimentions.height30),
+        Container(
+          margin: EdgeInsets.only(left: Dimentions.width30),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              const LargeText(text: 'Popular'),
+              SizedBox(width: Dimentions.width10),
+              Container(
+                margin: const EdgeInsets.only(bottom: 3),
+                child: const LargeText(
+                  text: '.',
+                  color: Colors.black26,
+                ),
+              ),
+              SizedBox(width: Dimentions.width10),
+              Container(
+                margin: const EdgeInsets.only(bottom: 2),
+                child: const SmallText(text: 'food catering'),
+              ),
+            ],
+          ),
+        ),
+        // List of food and Images
+        ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return Container(
+              margin: EdgeInsets.only(
+                  left: Dimentions.width20,
+                  right: Dimentions.width20,
+                  bottom: Dimentions.height10),
+              child: Row(
+                children: [
+                  // Image Section
+                  Container(
+                    width: Dimentions.listViewImgSize,
+                    height: Dimentions.listViewImgSize,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(Dimentions.radius20),
+                      color: Colors.white,
+                      image: const DecorationImage(
+                          image: AssetImage('assets/image/food0.png'),
+                          fit: BoxFit.cover),
+                    ),
+                  ),
+                  // Text Container
+                  Expanded(
+                    child: Container(
+                      height: Dimentions.listViewTextContSize,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(Dimentions.radius20),
+                          bottomRight: Radius.circular(Dimentions.radius20),
+                        ),
+                        color: Colors.green.shade100,
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: Dimentions.width10),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            LargeText(
+                              text: 'Nutritious fruit meal in China',
+                              size: Dimentions.font18,
+                            ),
+                            SizedBox(height: Dimentions.height10),
+                            const SmallText(
+                              text: 'With chinese characteristics',
+                            ),
+                            // Info Section
+                            SizedBox(height: Dimentions.height10),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                IconTextWidget(
+                                  icon: Icons.circle_sharp,
+                                  text: 'Normal',
+                                  iconColor: AppColors.iconColor1,
+                                ),
+                                IconTextWidget(
+                                  icon: Icons.location_on,
+                                  text: '1.7km',
+                                  iconColor: AppColors.mainColor,
+                                ),
+                                IconTextWidget(
+                                  icon: Icons.access_time_rounded,
+                                  text: '32mins',
+                                  iconColor: AppColors.iconColor2,
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            );
+          },
         ),
       ],
     );
@@ -159,7 +267,6 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           // Title Section
           const LargeText(
             text: 'Bitter Ogange Marinade',
-            color: AppColors.titleColor,
           ),
           // Rating Star Section
           SizedBox(height: Dimentions.height10),
