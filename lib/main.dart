@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_deli/Utils/colors.dart';
-import 'package:food_deli/home/main_food_page.dart';
+import 'package:food_deli/pages/food/popular_food_detail.dart';
+import 'package:food_deli/pages/home/main_food_page.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MainPage(),
+      home: const PopularFoodDetail(),
     );
   }
 }
@@ -33,7 +34,7 @@ class _MainPageState extends State<MainPage> {
   int currentIndex = 0;
   List pages = [
     const MainFoodPage(),
-    const MainFoodPage(),
+    const PopularFoodDetail(),
     const MainFoodPage(),
     const MainFoodPage(),
   ];

@@ -10,7 +10,7 @@ class IconTextWidget extends StatelessWidget {
   const IconTextWidget({
     Key? key,
     required this.icon,
-    this.iconColor = AppColors.iconColor1,
+    this.iconColor = const Color(0xFFffd28d),
     required this.text,
   }) : super(key: key);
 

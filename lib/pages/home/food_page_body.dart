@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:food_deli/Utils/colors.dart';
 import 'package:food_deli/Utils/dimentions.dart';
+import 'package:food_deli/widgets/app_column.dart';
 import 'package:food_deli/widgets/icon_text.dart';
 import 'package:food_deli/widgets/large_text.dart';
 import 'package:food_deli/widgets/small_text.dart';
@@ -256,68 +257,10 @@ class _FoodPageBodyState extends State<FoodPageBody> {
 
   Widget _buildCard(int index) {
     return Container(
-      width: double.maxFinite,
-      padding: EdgeInsets.symmetric(
-          horizontal: Dimentions.height20, vertical: Dimentions.height10),
-      // height: double.maxFinite,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Title Section
-          const LargeText(
-            text: 'Bitter Ogange Marinade',
-          ),
-          // Rating Star Section
-          SizedBox(height: Dimentions.height10),
-          Row(
-            children: [
-              Wrap(
-                children: List.generate(
-                  5,
-                  (index) => const Icon(
-                    Icons.star,
-                    size: 16,
-                    color: AppColors.yellowColor,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 10),
-              const SmallText(
-                text: '4.5',
-                color: AppColors.paraColor,
-              ),
-              const SizedBox(width: 10),
-              const SmallText(
-                text: '1285 comments',
-                color: AppColors.paraColor,
-              ),
-            ],
-          ),
-          // Info Section
-          SizedBox(height: Dimentions.height20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              IconTextWidget(
-                icon: Icons.circle_sharp,
-                text: 'Normal',
-                iconColor: AppColors.iconColor1,
-              ),
-              IconTextWidget(
-                icon: Icons.location_on,
-                text: '1.7km',
-                iconColor: AppColors.mainColor,
-              ),
-              IconTextWidget(
-                icon: Icons.access_time_rounded,
-                text: '32mins',
-                iconColor: AppColors.iconColor2,
-              ),
-            ],
-          )
-        ],
-      ),
-    );
+        width: double.maxFinite,
+        padding: EdgeInsets.symmetric(
+            horizontal: Dimentions.height20, vertical: Dimentions.height10),
+        // height: double.maxFinite,
+        child: const AppColumn(title: 'Chinese Side'));
   }
 }
