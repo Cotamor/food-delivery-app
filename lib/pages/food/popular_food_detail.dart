@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:food_deli/Utils/colors.dart';
 import 'package:food_deli/Utils/dimentions.dart';
+import 'package:food_deli/Utils/dummy_text.dart';
 import 'package:food_deli/widgets/app_column.dart';
 import 'package:food_deli/widgets/app_icon.dart';
 import 'package:food_deli/widgets/expandable_text_widget.dart';
-import 'package:food_deli/widgets/icon_text.dart';
 import 'package:food_deli/widgets/large_text.dart';
-import 'package:food_deli/widgets/small_text.dart';
 
 class PopularFoodDetail extends StatelessWidget {
   const PopularFoodDetail({Key? key}) : super(key: key);
@@ -71,11 +70,9 @@ class PopularFoodDetail extends StatelessWidget {
                   const LargeText(text: 'Introduce'),
                   SizedBox(height: Dimentions.height20),
                   // Description Section(ExpandableTextWidget)
-                  const Expanded(
+                  Expanded(
                     child: SingleChildScrollView(
-                      child: ExpandableTextWidget(
-                          text:
-                              'Brisket venison hamburger leberkas. Meatball t-bone cupim ham flank boudin brisket porchetta pork belly alcatra ground round jowl capicola. Hamburger corned beef alcatra rump frankfurter tongue kevin burgdoggen. T-bone rump jowl chislic pig leberkas tenderloin drumstick doner salami turducken ham pork loin burgdoggen meatloaf. Cupim pork chop shank filet mignon. Shankle pork belly tongue jerky, kevin chicken hamburger turducken rump. Rump ham short ribs venison kielbasa.'),
+                      child: ExpandableTextWidget(text: DummyText.middle),
                     ),
                   ),
                 ],
@@ -126,6 +123,7 @@ class PopularFoodDetail extends StatelessWidget {
                 ],
               ),
             ),
+            // Bottom Nav(Add to Cart Button)
             Container(
               padding: EdgeInsets.symmetric(
                   horizontal: Dimentions.width20,
