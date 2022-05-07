@@ -1,20 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:food_deli/Utils/app_constants.dart';
 import 'package:food_deli/Utils/colors.dart';
 import 'package:food_deli/Utils/dimentions.dart';
-import 'package:food_deli/Utils/dummy_text.dart';
+import 'package:food_deli/controllers/recommended_product_controller.dart';
+import 'package:food_deli/models/products_model.dart';
+import 'package:food_deli/routes/route_helper.dart';
 import 'package:food_deli/widgets/app_icon.dart';
 import 'package:food_deli/widgets/expandable_text_widget.dart';
 import 'package:food_deli/widgets/large_text.dart';
+import 'package:get/get.dart';
 
 class RecommendedFoodDetail extends StatelessWidget {
-  const RecommendedFoodDetail({Key? key}) : super(key: key);
+  final int pageId;
+  const RecommendedFoodDetail({
+    Key? key,
+    required this.pageId,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final ProductModel product =
+        Get.find<RecommendedProductController>().recommendedProductList[pageId];
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            automaticallyImplyLeading: false,
             toolbarHeight: 70,
             bottom: PreferredSize(
               preferredSize: const Size.fromHeight(20),
@@ -30,7 +41,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                 width: double.maxFinite,
                 child: Center(
                   child: LargeText(
-                    text: 'Chinese Side',
+                    text: product.name!,
                     size: Dimentions.font26,
                   ),
                 ),
@@ -41,14 +52,22 @@ class RecommendedFoodDetail extends StatelessWidget {
             expandedHeight: 300,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                AppIcon(icon: Icons.close),
-                AppIcon(icon: Icons.shopping_cart_outlined),
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(RouteHelper.getInitial());
+                  },
+                  child: const AppIcon(icon: Icons.close),
+                ),
+                GestureDetector(
+                  onTap: () {},
+                  child: const AppIcon(icon: Icons.shopping_cart_outlined),
+                ),
               ],
             ),
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                'assets/image/food0.png',
+              background: Image.network(
+                AppConstants.uploadURL + product.img!,
                 // width: double.maxFinite,
                 fit: BoxFit.cover,
               ),
@@ -59,13 +78,14 @@ class RecommendedFoodDetail extends StatelessWidget {
               children: [
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: Dimentions.width20),
-                  child: ExpandableTextWidget(text: DummyText.long),
+                  child: ExpandableTextWidget(text: product.description!),
                 ),
               ],
             ),
           ),
         ],
       ),
+      // Buttom Navigation
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -82,8 +102,8 @@ class RecommendedFoodDetail extends StatelessWidget {
                   iconColor: Colors.white,
                   iconSize: Dimentions.iconSize24,
                 ),
-                const LargeText(
-                  text: '\$12.88 x 0',
+                LargeText(
+                  text: '\$${product.price} x 0',
                 ),
                 AppIcon(
                   icon: Icons.add,
@@ -134,8 +154,8 @@ class RecommendedFoodDetail extends StatelessWidget {
                     borderRadius: BorderRadius.circular(Dimentions.radius20),
                     color: AppColors.mainColor,
                   ),
-                  child: const LargeText(
-                    text: '\$10 | Add to cart',
+                  child: LargeText(
+                    text: '\$${product.price} | Add to cart',
                     color: Colors.white,
                   ),
                 ),

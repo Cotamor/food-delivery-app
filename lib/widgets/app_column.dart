@@ -21,7 +21,7 @@ class AppColumn extends StatelessWidget {
         // Title Section
         LargeText(
           text: title,
-          size: Dimentions.font26,
+          size: Dimentions.font20,
         ),
         // Rating Star Section
         SizedBox(height: Dimentions.height10),

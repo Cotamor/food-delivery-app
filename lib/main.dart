@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:food_deli/Utils/colors.dart';
+import 'package:food_deli/controllers/cart_controller.dart';
+import 'package:food_deli/controllers/popular_product_controller.dart';
+import 'package:food_deli/controllers/recommended_product_controller.dart';
 import 'package:food_deli/pages/food/popular_food_detail.dart';
-import 'package:food_deli/pages/food/recommended_food_detail.dart';
 import 'package:food_deli/pages/home/main_food_page.dart';
+import 'package:food_deli/routes/route_helper.dart';
 import 'package:get/get.dart';
+import 'helper/dependencies.dart' as dep;
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dep.init();
   runApp(const MyApp());
 }
 
@@ -13,13 +19,20 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    Get.find<PopularProductController>().getPopularProductList();
+    Get.find<RecommendedProductController>().getRecommendedProductList();
+    Get.find<CartController>();
+
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const RecommendedFoodDetail(),
+      // theme: ThemeData(
+      //   primarySwatch: Colors.blue,
+      // ),
+      home: MainPage(),
+      initialRoute: RouteHelper.initial,
+      getPages: RouteHelper.routes,
+      // home: const RecommendedFoodDetail(),
       // home: const PopularFoodDetail(),
     );
   }
@@ -36,7 +49,7 @@ class _MainPageState extends State<MainPage> {
   int currentIndex = 0;
   List pages = [
     const MainFoodPage(),
-    const PopularFoodDetail(),
+    const MainFoodPage(),
     const MainFoodPage(),
     const MainFoodPage(),
   ];
