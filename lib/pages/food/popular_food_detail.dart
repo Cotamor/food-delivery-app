@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:food_deli/Utils/app_constants.dart';
 import 'package:food_deli/Utils/colors.dart';
 import 'package:food_deli/Utils/dimentions.dart';
-import 'package:food_deli/Utils/dummy_text.dart';
 import 'package:food_deli/controllers/cart_controller.dart';
 import 'package:food_deli/controllers/popular_product_controller.dart';
 import 'package:food_deli/models/products_model.dart';
-import 'package:food_deli/pages/home/main_food_page.dart';
 import 'package:food_deli/routes/route_helper.dart';
 import 'package:food_deli/widgets/app_column.dart';
 import 'package:food_deli/widgets/app_icon.dart';
@@ -26,7 +24,7 @@ class PopularFoodDetail extends StatelessWidget {
     final ProductModel product =
         Get.find<PopularProductController>().popularProductList[pageId];
     Get.find<PopularProductController>()
-        .initProduct(Get.find<CartController>());
+        .initProduct(product, Get.find<CartController>());
 
     return Scaffold(
       body: Stack(
@@ -62,8 +60,42 @@ class PopularFoodDetail extends StatelessWidget {
                   child: const AppIcon(icon: Icons.arrow_back_ios),
                 ),
                 GestureDetector(
-                  onTap: () {},
-                  child: const AppIcon(icon: Icons.shopping_cart),
+                  onTap: () {
+                    Get.toNamed(RouteHelper.getCart());
+                  },
+                  child: GetBuilder<PopularProductController>(
+                      builder: (controller) {
+                    return Stack(
+                      children: [
+                        const AppIcon(
+                          icon: Icons.shopping_cart,
+                        ),
+                        controller.totalItems >= 1
+                            ? const Positioned(
+                                right: 0,
+                                top: 0,
+                                child: AppIcon(
+                                  icon: Icons.circle,
+                                  iconColor: Colors.transparent,
+                                  bgColor: AppColors.mainColor,
+                                  size: 18,
+                                ),
+                              )
+                            : Container(),
+                        controller.totalItems >= 1
+                            ? Positioned(
+                                right: 3,
+                                top: 3,
+                                child: LargeText(
+                                  text: controller.totalItems.toString(),
+                                  size: 12,
+                                  color: Colors.white,
+                                ),
+                              )
+                            : Container(),
+                      ],
+                    );
+                  }),
                 ),
               ],
             ),
@@ -134,6 +166,7 @@ class PopularFoodDetail extends StatelessWidget {
                   borderRadius: BorderRadius.circular(Dimentions.radius20),
                   color: Colors.white,
                 ),
+                // Bottom Nav(+ & - button)
                 child: Row(
                   children: [
                     GestureDetector(
@@ -146,7 +179,7 @@ class PopularFoodDetail extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: Dimentions.width10 / 2),
-                    LargeText(text: popularProduct.quantity.toString()),
+                    LargeText(text: popularProduct.inCartItems.toString()),
                     SizedBox(width: Dimentions.width10 / 2),
                     GestureDetector(
                       onTap: () {

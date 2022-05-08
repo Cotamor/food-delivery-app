@@ -1,4 +1,5 @@
 import 'package:food_deli/main.dart';
+import 'package:food_deli/pages/cart/cart_page.dart';
 import 'package:food_deli/pages/food/popular_food_detail.dart';
 import 'package:food_deli/pages/food/recommended_food_detail.dart';
 import 'package:food_deli/pages/home/main_food_page.dart';
@@ -8,11 +9,13 @@ class RouteHelper {
   static const String initial = '/';
   static const String popularFood = '/popular-food';
   static const String recommendedFood = '/recommended-food';
+  static const String cart = '/cart';
 
   static String getInitial() => '$initial';
   static String getPopularFood(int pageId) => '$popularFood?pageId=$pageId';
   static String getRecommendedFood(int pageId) =>
       '$recommendedFood?pageId=$pageId';
+  static String getCart() => cart;
 
   static List<GetPage> routes = [
     GetPage(name: initial, page: () => const MainFoodPage()),
@@ -32,5 +35,6 @@ class RouteHelper {
       },
       transition: Transition.zoom,
     ),
+    GetPage(name: cart, page: () => const CartPage()),
   ];
 }

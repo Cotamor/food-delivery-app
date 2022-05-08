@@ -3,7 +3,7 @@ import 'package:food_deli/Utils/colors.dart';
 import 'package:food_deli/controllers/cart_controller.dart';
 import 'package:food_deli/controllers/popular_product_controller.dart';
 import 'package:food_deli/controllers/recommended_product_controller.dart';
-import 'package:food_deli/pages/food/popular_food_detail.dart';
+import 'package:food_deli/pages/cart/cart_page.dart';
 import 'package:food_deli/pages/home/main_food_page.dart';
 import 'package:food_deli/routes/route_helper.dart';
 import 'package:get/get.dart';
@@ -29,7 +29,8 @@ class MyApp extends StatelessWidget {
       // theme: ThemeData(
       //   primarySwatch: Colors.blue,
       // ),
-      home: MainPage(),
+      // home: CartPage(),
+      home: const MainPage(),
       initialRoute: RouteHelper.initial,
       getPages: RouteHelper.routes,
       // home: const RecommendedFoodDetail(),
