@@ -6,7 +6,6 @@ import 'package:food_deli/Utils/dimentions.dart';
 import 'package:food_deli/controllers/popular_product_controller.dart';
 import 'package:food_deli/controllers/recommended_product_controller.dart';
 import 'package:food_deli/models/products_model.dart';
-import 'package:food_deli/pages/food/popular_food_detail.dart';
 import 'package:food_deli/routes/route_helper.dart';
 import 'package:food_deli/widgets/app_column.dart';
 import 'package:food_deli/widgets/icon_text.dart';

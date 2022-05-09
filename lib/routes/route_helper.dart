@@ -2,22 +2,30 @@ import 'package:food_deli/main.dart';
 import 'package:food_deli/pages/cart/cart_page.dart';
 import 'package:food_deli/pages/food/popular_food_detail.dart';
 import 'package:food_deli/pages/food/recommended_food_detail.dart';
-import 'package:food_deli/pages/home/main_food_page.dart';
+import 'package:food_deli/pages/home/home_page.dart';
+import 'package:food_deli/pages/splash/splash_page.dart';
 import 'package:get/get.dart';
 
 class RouteHelper {
+  static const String splashPage = '/splash-page';
   static const String initial = '/';
   static const String popularFood = '/popular-food';
   static const String recommendedFood = '/recommended-food';
   static const String cartPage = '/cart-page';
 
+  static String getSplashPage() => '$splashPage';
   static String getInitial() => '$initial';
   static String getPopularFood(int pageId, String page) => '$popularFood?pageId=$pageId&page=$page';
   static String getRecommendedFood(int pageId, String page) => '$recommendedFood?pageId=$pageId&page=$page';
-  static String getCartPage() => cartPage;
+  static String getCartPage() => '$cartPage';
 
   static List<GetPage> routes = [
-    GetPage(name: initial, page: () => const MainFoodPage()),
+    GetPage(
+      name: splashPage,
+      page: () => const SplashPage(),
+      transition: Transition.zoom,
+    ),
+    GetPage(name: initial, page: () => const HomePage()),
     GetPage(
       name: popularFood,
       page: () {
