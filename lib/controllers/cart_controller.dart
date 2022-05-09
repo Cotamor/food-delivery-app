@@ -30,6 +30,7 @@ class CartController extends GetxController {
             quantity: value.quantity! + quantity,
             isExist: true,
             time: DateTime.now().toString(),
+            product: product,
           );
         },
       );
@@ -49,6 +50,7 @@ class CartController extends GetxController {
               quantity: quantity,
               isExist: true,
               time: DateTime.now().toString(),
+              product: product,
             );
           },
         );
@@ -61,6 +63,7 @@ class CartController extends GetxController {
         );
       }
     }
+    update();
   }
 
   bool existInCart(ProductModel product) {
@@ -96,5 +99,16 @@ class CartController extends GetxController {
         return e.value;
       },
     ).toList();
+  }
+
+  int get getTotalAmount {
+    var total = 0;
+    _items.forEach((key, value) {
+      final price = value.price;
+      final quantity = value.quantity;
+      total += price! * quantity!;
+    });
+    print('Total Price: $total');
+    return total;
   }
 }

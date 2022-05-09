@@ -14,17 +14,17 @@ import 'package:get/get.dart';
 
 class PopularFoodDetail extends StatelessWidget {
   final int pageId;
+  final String page;
   const PopularFoodDetail({
     Key? key,
     required this.pageId,
+    required this.page,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final ProductModel product =
-        Get.find<PopularProductController>().popularProductList[pageId];
-    Get.find<PopularProductController>()
-        .initProduct(product, Get.find<CartController>());
+    final ProductModel product = Get.find<PopularProductController>().popularProductList[pageId];
+    Get.find<PopularProductController>().initProduct(product, Get.find<CartController>());
 
     return Scaffold(
       body: Stack(
@@ -55,20 +55,25 @@ class PopularFoodDetail extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Get.toNamed(RouteHelper.getInitial());
+                    if (page == 'cart-page') {
+                      Get.toNamed(RouteHelper.getCartPage());
+                    } else {
+                      Get.toNamed(RouteHelper.getInitial());
+                    }
                   },
                   child: const AppIcon(icon: Icons.arrow_back_ios),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Get.toNamed(RouteHelper.getCart());
-                  },
-                  child: GetBuilder<PopularProductController>(
-                      builder: (controller) {
-                    return Stack(
+                GetBuilder<PopularProductController>(builder: (controller) {
+                  return GestureDetector(
+                    onTap: () {
+                      if (controller.totalItems >= 1) {
+                        Get.toNamed(RouteHelper.getCartPage());
+                      }
+                    },
+                    child: Stack(
                       children: [
                         const AppIcon(
-                          icon: Icons.shopping_cart,
+                          icon: Icons.shopping_cart_outlined,
                         ),
                         controller.totalItems >= 1
                             ? const Positioned(
@@ -94,9 +99,9 @@ class PopularFoodDetail extends StatelessWidget {
                               )
                             : Container(),
                       ],
-                    );
-                  }),
-                ),
+                    ),
+                  );
+                }),
               ],
             ),
           ),
@@ -138,8 +143,7 @@ class PopularFoodDetail extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar:
-          GetBuilder<PopularProductController>(builder: (popularProduct) {
+      bottomNavigationBar: GetBuilder<PopularProductController>(builder: (popularProduct) {
         return Container(
           height: Dimentions.bottomHeightBar120,
           padding: EdgeInsets.only(
@@ -159,9 +163,7 @@ class PopularFoodDetail extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                padding: EdgeInsets.symmetric(
-                    horizontal: Dimentions.width20,
-                    vertical: Dimentions.height20),
+                padding: EdgeInsets.symmetric(horizontal: Dimentions.width20, vertical: Dimentions.height20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimentions.radius20),
                   color: Colors.white,
@@ -199,9 +201,7 @@ class PopularFoodDetail extends StatelessWidget {
                   popularProduct.addItem(product);
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: Dimentions.width20,
-                      vertical: Dimentions.height20),
+                  padding: EdgeInsets.symmetric(horizontal: Dimentions.width20, vertical: Dimentions.height20),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(Dimentions.radius20),
                     color: AppColors.mainColor,

@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       // ),
       // home: CartPage(),
       home: const MainPage(),
-      initialRoute: RouteHelper.initial,
+      initialRoute: RouteHelper.getInitial(),
       getPages: RouteHelper.routes,
       // home: const RecommendedFoodDetail(),
       // home: const PopularFoodDetail(),
@@ -51,7 +51,7 @@ class _MainPageState extends State<MainPage> {
   List pages = [
     const MainFoodPage(),
     const MainFoodPage(),
-    const MainFoodPage(),
+    const CartPage(),
     const MainFoodPage(),
   ];
   @override

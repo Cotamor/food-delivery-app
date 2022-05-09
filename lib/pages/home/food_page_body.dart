@@ -58,8 +58,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     controller: pageController,
                     itemCount: popularProducts.popularProductList.length,
                     itemBuilder: (context, index) {
-                      return _buildPageItem(
-                          index, popularProducts.popularProductList[index]);
+                      return _buildPageItem(index, popularProducts.popularProductList[index]);
                     },
                   ),
                 )
@@ -75,16 +74,13 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         // Dots(Indicatore)
         GetBuilder<PopularProductController>(builder: (popularProducts) {
           return DotsIndicator(
-            dotsCount: popularProducts.popularProductList.isEmpty
-                ? 1
-                : popularProducts.popularProductList.length,
+            dotsCount: popularProducts.popularProductList.isEmpty ? 1 : popularProducts.popularProductList.length,
             position: _currentPageValue,
             decorator: DotsDecorator(
               size: const Size.square(9.0),
               activeSize: const Size(18.0, 9.0),
               activeColor: AppColors.mainColor,
-              activeShape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5.0)),
+              activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
             ),
           );
         }),
@@ -122,10 +118,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        Get.toNamed(RouteHelper.getRecommendedFood(index));
+                        Get.toNamed(RouteHelper.getRecommendedFood(index, 'home'));
                       },
-                      child: _buildListItem(index,
-                          recommendedProduct.recommendedProductList[index]),
+                      child: _buildListItem(index, recommendedProduct.recommendedProductList[index]),
                     );
                   },
                 )
@@ -148,24 +143,19 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     if (index == _currentPageValue.floor()) {
       var currentScale = 1 - (_currentPageValue - index) * (1 - _scaleFactor);
       var currentTrans = _height * (1 - currentScale) / 2;
-      matrix = Matrix4.diagonal3Values(1, currentScale, 1)
-        ..setTranslationRaw(0, currentTrans, 0);
+      matrix = Matrix4.diagonal3Values(1, currentScale, 1)..setTranslationRaw(0, currentTrans, 0);
     } else if (index == _currentPageValue.floor() + 1) {
-      var currentScale =
-          _scaleFactor + (_currentPageValue - index + 1) * (1 - _scaleFactor);
+      var currentScale = _scaleFactor + (_currentPageValue - index + 1) * (1 - _scaleFactor);
       var currentTrans = _height * (1 - currentScale) / 2;
-      matrix = Matrix4.diagonal3Values(1, currentScale, 1)
-        ..setTranslationRaw(0, currentTrans, 0);
+      matrix = Matrix4.diagonal3Values(1, currentScale, 1)..setTranslationRaw(0, currentTrans, 0);
     } else if (index == _currentPageValue.floor() - 1) {
       var currentScale = 1 - (_currentPageValue - index) * (1 - _scaleFactor);
       var currentTrans = _height * (1 - currentScale) / 2;
-      matrix = Matrix4.diagonal3Values(1, currentScale, 1)
-        ..setTranslationRaw(0, currentTrans, 0);
+      matrix = Matrix4.diagonal3Values(1, currentScale, 1)..setTranslationRaw(0, currentTrans, 0);
     } else {
       var currentScale = 0.8;
       var currentTrans = _height * (1 - currentScale) / 2;
-      matrix = Matrix4.diagonal3Values(1, currentScale, 1)
-        ..setTranslationRaw(0, currentTrans, 0);
+      matrix = Matrix4.diagonal3Values(1, currentScale, 1)..setTranslationRaw(0, currentTrans, 0);
     }
 
     return Transform(
@@ -174,22 +164,19 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         children: [
           GestureDetector(
             onTap: () {
-              Get.toNamed(RouteHelper.getPopularFood(index));
+              Get.toNamed(RouteHelper.getPopularFood(index, 'home'));
             },
             child: Container(
               height: Dimentions.pageViewContainer,
-              margin: EdgeInsets.only(
-                  left: Dimentions.width10, right: Dimentions.width10),
+              margin: EdgeInsets.only(left: Dimentions.width10, right: Dimentions.width10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimentions.radius30),
                 image: DecorationImage(
                   // image: AssetImage('assets/image/food0.png'),
-                  image: NetworkImage(
-                      AppConstants.uploadURL + popularProduct.img!),
+                  image: NetworkImage(AppConstants.uploadURL + popularProduct.img!),
                   fit: BoxFit.cover,
                 ),
-                color:
-                    index.isEven ? Colors.blue.shade100 : Colors.grey.shade100,
+                color: index.isEven ? Colors.blue.shade100 : Colors.grey.shade100,
               ),
             ),
           ),
@@ -223,9 +210,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               ),
               child: Container(
                 width: double.maxFinite,
-                padding: EdgeInsets.symmetric(
-                    horizontal: Dimentions.height20,
-                    vertical: Dimentions.height10),
+                padding: EdgeInsets.symmetric(horizontal: Dimentions.height20, vertical: Dimentions.height10),
                 // height: double.maxFinite,
                 child: AppColumn(title: popularProduct.name!),
               ),
@@ -238,10 +223,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
 
   Widget _buildListItem(int index, ProductModel recommendedProduct) {
     return Container(
-      margin: EdgeInsets.only(
-          left: Dimentions.width20,
-          right: Dimentions.width20,
-          bottom: Dimentions.height10),
+      margin: EdgeInsets.only(left: Dimentions.width20, right: Dimentions.width20, bottom: Dimentions.height10),
       child: Row(
         children: [
           // Image Section
@@ -252,9 +234,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               borderRadius: BorderRadius.circular(Dimentions.radius20),
               color: Colors.white,
               image: DecorationImage(
-                  image: NetworkImage(
-                      AppConstants.uploadURL + recommendedProduct.img!),
-                  fit: BoxFit.cover),
+                  image: NetworkImage(AppConstants.uploadURL + recommendedProduct.img!), fit: BoxFit.cover),
             ),
           ),
           // Text Container
