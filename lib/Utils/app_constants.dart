@@ -8,4 +8,7 @@ class AppConstants {
   static const String uploadURL = '$baseURL/uploads/';
 
   static const String token = 'DBtoken';
+
+  // SharedPreferences key
+  static const String cartList = 'Cart-List';
 }

@@ -233,8 +233,8 @@ class CartPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(Dimentions.radius20),
                     color: AppColors.mainColor,
                   ),
-                  child: LargeText(
-                    text: '\$10 | Add to cart',
+                  child: const LargeText(
+                    text: 'Check Out',
                     color: Colors.white,
                   ),
                 ),

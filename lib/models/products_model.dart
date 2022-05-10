@@ -28,6 +28,17 @@ class Product {
       });
     }
   }
+
+  // Map<String, dynamic> toJson() {
+  //   final Map<String, dynamic> data = new Map<String, dynamic>();
+  //   data['total_size'] = this.totalSize;
+  //   data['type_id'] = this.typeId;
+  //   data['offset'] = this.offset;
+  //   if (this.products != null) {
+  //     data['products'] = this.products!.map((v) => v.toJson()).toList();
+  //   }
+  //   return data;
+  // }
 }
 
 class ProductModel {
@@ -66,4 +77,34 @@ class ProductModel {
     updatedAt = json['updated_at'];
     typeId = json['type_id'];
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'description': description,
+      'price': price,
+      'stars': stars,
+      'img': img,
+      'location': location,
+      'created_at': createdAt,
+      'updated_at': updatedAt,
+      'type_id': typeId,
+    };
+  }
+
+  //   Map<String, dynamic> toJson() {
+  //   final Map<String, dynamic> data = <String, dynamic>{};
+  //   data['id'] = id;
+  //   data['name'] = name;
+  //   data['description'] = description;
+  //   data['price'] = price;
+  //   data['stars'] = stars;
+  //   data['img'] = img;
+  //   data['location'] = location;
+  //   data['created_at'] = createdAt;
+  //   data['updated_at'] = updatedAt;
+  //   data['type_id'] = typeId;
+  //   return data;
+  // }
 }

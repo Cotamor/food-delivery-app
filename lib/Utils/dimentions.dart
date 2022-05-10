@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+// Emulator Screen Size H:813 W:392
 class Dimentions {
   static double screenHeight = Get.height;
   static double screenWidth = Get.width;
@@ -48,4 +49,7 @@ class Dimentions {
 
   // Bottom height
   static double bottomHeightBar120 = screenHeight / 6.77;
+
+  // SplashPage
+  static double splashImg = screenHeight / 3.38;
 }
