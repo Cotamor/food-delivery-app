@@ -12,10 +12,14 @@ class CartController extends GetxController {
     required this.cartRepo,
   });
 
-  final Map<int, CartModel> _items = {};
+  Map<int, CartModel> _items = {};
   Map<int, CartModel> get items => _items;
+
+  Map<int, CartModel> _history = {};
+  Map<int, CartModel> get history => _history;
   // Only for storage and sharedPreferences
   List<CartModel> storageItems = [];
+  List<CartModel> historyItems = [];
 
   void addItem(ProductModel product, int quantity) {
     var totalQuantity = 0;
@@ -69,6 +73,26 @@ class CartController extends GetxController {
     update();
   }
 
+  void addToHistoryAndClearCart() {
+    cartRepo.addToCartHistoryList();
+    clear();
+  }
+
+  void clear() {
+    _items = {};
+    update();
+  }
+
+  void clearCheckout() {
+    cartRepo.clearHistory();
+    clearHistory();
+  }
+
+  void clearHistory() {
+    _history = {};
+    update();
+  }
+
   bool existInCart(ProductModel product) {
     if (_items.containsKey(product.id)) {
       return true;
@@ -104,6 +128,14 @@ class CartController extends GetxController {
     ).toList();
   }
 
+  List<CartModel> get getHistory {
+    return _history.entries.map(
+      (e) {
+        return e.value;
+      },
+    ).toList();
+  }
+
   int get getTotalAmount {
     var total = 0;
     _items.forEach((key, value) {
@@ -115,7 +147,7 @@ class CartController extends GetxController {
     return total;
   }
 
-  List<CartModel> getCartData() {
+  List<CartModel> getCartList() {
     setCart = cartRepo.getCartList();
     return storageItems;
   }
@@ -127,4 +159,19 @@ class CartController extends GetxController {
       _items.putIfAbsent(storageItems[i].product!.id!, () => storageItems[i]);
     }
   }
+
+  List<CartModel> getCartHistoryList() {
+    // setHistory = cartRepo.getCartHistoryList();
+    print('Length of history items: ${historyItems.length}');
+
+    return cartRepo.getCartHistoryList();
+  }
+
+  // set setHistory(List<CartModel> items) {
+  //   historyItems = items;
+  //   print('Length of history items: ${historyItems.length}');
+  //   for (var i = 0; i < historyItems.length; i++) {
+  //     _history.putIfAbsent(historyItems[i].product!.id!, () => historyItems[i]);
+  //   }
+  // }
 }

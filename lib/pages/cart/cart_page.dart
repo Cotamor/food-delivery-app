@@ -5,7 +5,6 @@ import 'package:food_deli/Utils/dimentions.dart';
 import 'package:food_deli/controllers/cart_controller.dart';
 import 'package:food_deli/controllers/popular_product_controller.dart';
 import 'package:food_deli/controllers/recommended_product_controller.dart';
-import 'package:food_deli/models/cart_model.dart';
 import 'package:food_deli/routes/route_helper.dart';
 import 'package:food_deli/widgets/app_icon.dart';
 import 'package:food_deli/widgets/large_text.dart';
@@ -226,6 +225,8 @@ class CartPage extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   // popularProduct.addItem(product);
+                  cartController.addToHistoryAndClearCart();
+                  Get.toNamed(RouteHelper.checkoutPage);
                 },
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: Dimentions.width20, vertical: Dimentions.height20),

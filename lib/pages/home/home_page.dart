@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_deli/Utils/colors.dart';
-import 'package:food_deli/pages/cart/cart_page.dart';
+import 'package:food_deli/pages/checkout/cart_history.dart';
 import 'package:food_deli/pages/home/main_food_page.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   List pages = [
     const MainFoodPage(),
     const Center(child: Text('List Page')),
-    const CartPage(),
+    const CartHistory(),
     const Center(child: Text('Profile Page')),
   ];
   @override

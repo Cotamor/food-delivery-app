@@ -36,10 +36,10 @@ class PopularProductController extends GetxController {
 
   void setQuantity(bool isIncrement) {
     if (isIncrement) {
-      print('increment _quantity: $_quantity');
+      // print('increment _quantity: $_quantity');
       _quantity = checkQuantity(_quantity + 1);
     } else {
-      print('decrement _quantity: $_quantity');
+      // print('decrement _quantity: $_quantity');
       _quantity = checkQuantity(_quantity - 1);
     }
     update();
@@ -88,7 +88,7 @@ class PopularProductController extends GetxController {
     if (exist) {
       _inCartItems = _cart.getQuantity(product);
     }
-    print('quantity in the cart is $_inCartItems');
+    // print('quantity in the cart is $_inCartItems');
   }
 
   void addItem(ProductModel product) {
@@ -98,7 +98,7 @@ class PopularProductController extends GetxController {
 
     // for test purpose, print out what is inside the cart?
     _cart.items.forEach((key, value) {
-      print('Name:${value.name}, Id: ${value.id}, Quantity: ${value.quantity}');
+      // print('Name:${value.name}, Id: ${value.id}, Quantity: ${value.quantity}');
     });
     //
 

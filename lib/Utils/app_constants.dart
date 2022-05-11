@@ -11,4 +11,5 @@ class AppConstants {
 
   // SharedPreferences key
   static const String cartList = 'Cart-List';
+  static const String cartHistoryList = 'Cart-History-List';
 }

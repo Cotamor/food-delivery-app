@@ -16,7 +16,8 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    Get.find<CartController>().getCartData();
+    Get.find<CartController>().getCartList();
+    Get.find<CartController>().getCartHistoryList();
     return GetBuilder<PopularProductController>(builder: (_) {
       return GetBuilder<RecommendedProductController>(builder: (_) {
         return GetMaterialApp(
