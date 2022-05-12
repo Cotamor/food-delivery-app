@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_deli/Utils/colors.dart';
-import 'package:food_deli/pages/checkout/cart_history.dart';
+import 'package:food_deli/pages/cart/cart_history.dart';
 import 'package:food_deli/pages/home/main_food_page.dart';
 import 'package:get/get.dart';
 

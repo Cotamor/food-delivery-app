@@ -83,16 +83,6 @@ class CartController extends GetxController {
     update();
   }
 
-  void clearCheckout() {
-    cartRepo.clearHistory();
-    clearHistory();
-  }
-
-  void clearHistory() {
-    _history = {};
-    update();
-  }
-
   bool existInCart(ProductModel product) {
     if (_items.containsKey(product.id)) {
       return true;
@@ -165,6 +155,16 @@ class CartController extends GetxController {
     print('Length of history items: ${historyItems.length}');
 
     return cartRepo.getCartHistoryList();
+  }
+
+  set setItems(Map<int, CartModel> setItems) {
+    _items = {};
+    _items = setItems;
+  }
+
+  void addToCartList() {
+    cartRepo.addToCartList(getItems);
+    update();
   }
 
   // set setHistory(List<CartModel> items) {

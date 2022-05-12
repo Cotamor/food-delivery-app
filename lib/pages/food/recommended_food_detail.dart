@@ -72,9 +72,10 @@ class RecommendedFoodDetail extends StatelessWidget {
                   builder: (controller) {
                     return GestureDetector(
                       onTap: () {
-                        if (controller.totalItems >= 1) {
-                          Get.toNamed(RouteHelper.getCartPage());
-                        }
+                        // if (controller.totalItems >= 1) {
+                        //   Get.toNamed(RouteHelper.getCartPage());
+                        // }
+                        Get.toNamed(RouteHelper.getCartPage());
                       },
                       child: Stack(
                         children: [
@@ -160,7 +161,6 @@ class RecommendedFoodDetail extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        print('I am tapped');
                         controller.setQuantity(true);
                       },
                       child: AppIcon(

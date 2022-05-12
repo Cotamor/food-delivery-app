@@ -1,5 +1,5 @@
 import 'package:food_deli/pages/cart/cart_page.dart';
-import 'package:food_deli/pages/checkout/cart_history.dart';
+import 'package:food_deli/pages/cart/cart_history.dart';
 import 'package:food_deli/pages/food/popular_food_detail.dart';
 import 'package:food_deli/pages/food/recommended_food_detail.dart';
 import 'package:food_deli/pages/home/home_page.dart';

@@ -97,9 +97,9 @@ class PopularProductController extends GetxController {
     _inCartItems = _cart.getQuantity(product);
 
     // for test purpose, print out what is inside the cart?
-    _cart.items.forEach((key, value) {
-      // print('Name:${value.name}, Id: ${value.id}, Quantity: ${value.quantity}');
-    });
+    // _cart.items.forEach((key, value) {
+    // print('Name:${value.name}, Id: ${value.id}, Quantity: ${value.quantity}');
+    // });
     //
 
     update();

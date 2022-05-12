@@ -13,6 +13,7 @@ class CartRepo {
   void addToCartList(List<CartModel> cartList) async {
     // prefs.remove(AppConstants.cartList);
     // prefs.remove(AppConstants.cartHistoryList);
+    // return;
     var time = DateTime.now().toString();
     cart = [];
     // convert objects to string because sharedpreferences only accept string.
@@ -30,7 +31,7 @@ class CartRepo {
     List<String> carts = [];
     if (prefs.containsKey(AppConstants.cartList)) {
       carts = prefs.getStringList(AppConstants.cartList)!;
-      print('Inside getCartList : $carts');
+      // print('Inside getCartList : $carts');
     }
     // List<String> to json using jsonDecode() method, json to List<CartModel> using fromJson method!
     List<CartModel> cartList = [];
