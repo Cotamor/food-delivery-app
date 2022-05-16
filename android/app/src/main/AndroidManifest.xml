@@ -1,6 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.edasaki39.food_deli">
-   <application
+
+    <uses-permission android:name="android:permission.INTERNET" />
+    <!-- <application
+        android:label="food_deli"
+        android:name="${applicationName}"
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:icon="@mipmap/ic_launcher"> -->
+    <application
         android:label="food_deli"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
