@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:food_deli/controllers/cart_controller.dart';
 import 'package:food_deli/controllers/popular_product_controller.dart';
 import 'package:food_deli/controllers/recommended_product_controller.dart';
+import 'package:food_deli/pages/auth/sign_in_page.dart';
+import 'package:food_deli/pages/auth/sign_up_page.dart';
 import 'package:food_deli/routes/route_helper.dart';
 import 'package:get/get.dart';
 import 'helper/dependencies.dart' as dep;
@@ -22,11 +24,12 @@ class MyApp extends StatelessWidget {
       return GetBuilder<RecommendedProductController>(builder: (_) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Demo',
+          title: 'Food Delivery App',
           // theme: ThemeData(
           //   primarySwatch: Colors.blue,
           // ),
-          initialRoute: RouteHelper.getSplashPage(),
+          home: const SignInPage(),
+          // initialRoute: RouteHelper.getSplashPage(),
           getPages: RouteHelper.routes,
         );
       });

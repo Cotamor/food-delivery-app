@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_deli/Utils/colors.dart';
+import 'package:food_deli/pages/account/account_page.dart';
+import 'package:food_deli/pages/auth/sign_up_page.dart';
 import 'package:food_deli/pages/cart/cart_history.dart';
 import 'package:food_deli/pages/home/main_food_page.dart';
 import 'package:get/get.dart';
@@ -15,9 +17,9 @@ class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
   List pages = [
     const MainFoodPage(),
-    const Center(child: Text('List Page')),
+    const SignUpPage(),
     const CartHistory(),
-    const Center(child: Text('Profile Page')),
+    const AccountPage(),
   ];
   @override
   Widget build(BuildContext context) {
