@@ -1,3 +1,4 @@
+import 'package:food_deli/pages/address/add_address_page.dart';
 import 'package:food_deli/pages/auth/sign_in_page.dart';
 import 'package:food_deli/pages/cart/cart_page.dart';
 import 'package:food_deli/pages/cart/cart_history.dart';
@@ -15,6 +16,7 @@ class RouteHelper {
   static const String cartPage = '/cart-page';
   static const String signInPage = '/sign-in';
   static const String checkoutPage = '/checkout-page';
+  static const String addAddress = '/add-address';
 
   static String getSplashPage() => '$splashPage';
   static String getInitial() => '$initial';
@@ -23,6 +25,7 @@ class RouteHelper {
   static String getCartPage() => '$cartPage';
   static String getSignInPage() => '$signInPage';
   static String getCheckoutPage() => '$checkoutPage';
+  static String getAddAddressPage() => '$addAddress';
 
   static List<GetPage> routes = [
     GetPage(
@@ -62,6 +65,11 @@ class RouteHelper {
     GetPage(
       name: checkoutPage,
       page: () => const CartHistory(),
+      transition: Transition.zoom,
+    ),
+    GetPage(
+      name: addAddress,
+      page: () => const AddAddressPage(),
       transition: Transition.zoom,
     ),
   ];

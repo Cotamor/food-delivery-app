@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:food_deli/controllers/cart_controller.dart';
 import 'package:food_deli/controllers/popular_product_controller.dart';
 import 'package:food_deli/controllers/recommended_product_controller.dart';
-import 'package:food_deli/pages/auth/sign_in_page.dart';
-import 'package:food_deli/pages/auth/sign_up_page.dart';
 import 'package:food_deli/routes/route_helper.dart';
 import 'package:get/get.dart';
 import 'helper/dependencies.dart' as dep;

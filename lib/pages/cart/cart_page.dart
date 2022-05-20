@@ -5,6 +5,7 @@ import 'package:food_deli/Utils/dimentions.dart';
 import 'package:food_deli/base/no_data_page.dart';
 import 'package:food_deli/controllers/auth_controller.dart';
 import 'package:food_deli/controllers/cart_controller.dart';
+import 'package:food_deli/controllers/location_controller.dart';
 import 'package:food_deli/controllers/popular_product_controller.dart';
 import 'package:food_deli/controllers/recommended_product_controller.dart';
 import 'package:food_deli/routes/route_helper.dart';
@@ -247,7 +248,9 @@ class CartPage extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         if (Get.find<AuthController>().userLoggedIn()) {
-                          cartController.addToHistoryAndClearCart();
+                          if (Get.find<LocationController>().addressList.isEmpty) {
+                            Get.toNamed(RouteHelper.getAddAddressPage());
+                          }
                         } else {
                           Get.toNamed(RouteHelper.getSignInPage());
                         }
