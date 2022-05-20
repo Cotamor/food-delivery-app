@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:food_deli/Utils/colors.dart';
 import 'package:food_deli/pages/account/account_page.dart';
+import 'package:food_deli/pages/auth/sign_in_page.dart';
 import 'package:food_deli/pages/auth/sign_up_page.dart';
 import 'package:food_deli/pages/cart/cart_history.dart';
+import 'package:food_deli/pages/home/logout_page.dart';
 import 'package:food_deli/pages/home/main_food_page.dart';
+import 'package:food_deli/widgets/large_text.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
   List pages = [
     const MainFoodPage(),
-    const SignUpPage(),
+    const LogoutPage(),
     const CartHistory(),
     const AccountPage(),
   ];

@@ -131,7 +131,7 @@ class CartHistory extends StatelessWidget {
                                                     borderRadius: BorderRadius.circular(Dimentions.radius15),
                                                     image: DecorationImage(
                                                         image: NetworkImage(
-                                                          AppConstants.uploadURL +
+                                                          AppConstants.UPLOAD_URL +
                                                               cartHistoryList[listCounter - 1].img!,
                                                         ),
                                                         fit: BoxFit.cover),

@@ -3,6 +3,7 @@ import 'package:food_deli/Utils/app_constants.dart';
 import 'package:food_deli/Utils/colors.dart';
 import 'package:food_deli/Utils/dimentions.dart';
 import 'package:food_deli/base/no_data_page.dart';
+import 'package:food_deli/controllers/auth_controller.dart';
 import 'package:food_deli/controllers/cart_controller.dart';
 import 'package:food_deli/controllers/popular_product_controller.dart';
 import 'package:food_deli/controllers/recommended_product_controller.dart';
@@ -125,7 +126,7 @@ class CartPage extends StatelessWidget {
                                                 color: Colors.white,
                                                 image: DecorationImage(
                                                     image: NetworkImage(
-                                                        AppConstants.uploadURL + controller.getItems[index].img!),
+                                                        AppConstants.UPLOAD_URL + controller.getItems[index].img!),
                                                     fit: BoxFit.cover),
                                               ),
                                             ),
@@ -245,9 +246,11 @@ class CartPage extends StatelessWidget {
                     // Bottom Nav(Add to Cart Button)
                     GestureDetector(
                       onTap: () {
-                        // popularProduct.addItem(product);
-                        cartController.addToHistoryAndClearCart();
-                        // Get.toNamed(RouteHelper.checkoutPage);
+                        if (Get.find<AuthController>().userLoggedIn()) {
+                          cartController.addToHistoryAndClearCart();
+                        } else {
+                          Get.toNamed(RouteHelper.getSignInPage());
+                        }
                       },
                       child: Container(
                         padding: EdgeInsets.symmetric(horizontal: Dimentions.width20, vertical: Dimentions.height20),

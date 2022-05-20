@@ -37,7 +37,7 @@ class SignInPage extends StatelessWidget {
         authController.login(email, password).then((status) {
           if (status.isSuccess) {
             showCustomSnackBar('Success Login', color: Colors.green, title: 'Login');
-            Get.toNamed(RouteHelper.getInitial());
+            Get.offNamed(RouteHelper.getInitial());
           } else {
             showCustomSnackBar('Fail Login');
           }

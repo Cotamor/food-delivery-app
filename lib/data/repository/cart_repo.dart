@@ -21,7 +21,7 @@ class CartRepo {
       element.time = time;
       return cart.add(jsonEncode(element));
     });
-    prefs.setStringList(AppConstants.cartList, cart);
+    prefs.setStringList(AppConstants.CART_LIST, cart);
     // print(prefs.getStringList(AppConstants.cartList));
 
     getCartList();
@@ -29,8 +29,8 @@ class CartRepo {
 
   List<CartModel> getCartList() {
     List<String> carts = [];
-    if (prefs.containsKey(AppConstants.cartList)) {
-      carts = prefs.getStringList(AppConstants.cartList)!;
+    if (prefs.containsKey(AppConstants.CART_LIST)) {
+      carts = prefs.getStringList(AppConstants.CART_LIST)!;
       // print('Inside getCartList : $carts');
     }
     // List<String> to json using jsonDecode() method, json to List<CartModel> using fromJson method!
@@ -44,8 +44,8 @@ class CartRepo {
   }
 
   List<CartModel> getCartHistoryList() {
-    if (prefs.containsKey(AppConstants.cartHistoryList)) {
-      cartHistory = prefs.getStringList(AppConstants.cartHistoryList)!;
+    if (prefs.containsKey(AppConstants.CART_HISTORY_LIST)) {
+      cartHistory = prefs.getStringList(AppConstants.CART_HISTORY_LIST)!;
     }
     // List<String> to json using jsonDecode() method, json to List<CartModel> using fromJson method!
     List<CartModel> cartListHistory = [];
@@ -56,15 +56,15 @@ class CartRepo {
   }
 
   void addToCartHistoryList() {
-    if (prefs.containsKey(AppConstants.cartHistoryList)) {
-      cartHistory = prefs.getStringList(AppConstants.cartHistoryList)!;
+    if (prefs.containsKey(AppConstants.CART_HISTORY_LIST)) {
+      cartHistory = prefs.getStringList(AppConstants.CART_HISTORY_LIST)!;
     }
     for (var i = 0; i < cart.length; i++) {
       print('history list: ${cart[i]}');
       cartHistory.add(cart[i]);
     }
     removeCart();
-    prefs.setStringList(AppConstants.cartHistoryList, cartHistory);
+    prefs.setStringList(AppConstants.CART_HISTORY_LIST, cartHistory);
     print('the length of history list: ${getCartHistoryList().length}');
     for (var j = 0; j < getCartHistoryList().length; j++) {
       print('the time for the order is ${getCartHistoryList()[j].time}');
@@ -74,10 +74,12 @@ class CartRepo {
 
   void removeCart() async {
     cart = [];
-    await prefs.remove(AppConstants.cartList);
+    await prefs.remove(AppConstants.CART_LIST);
   }
 
-  void clearHistory() async {
-    await prefs.remove(AppConstants.cartHistoryList);
+  void clearCartHistory() async {
+    removeCart();
+    cartHistory = [];
+    await prefs.remove(AppConstants.CART_HISTORY_LIST);
   }
 }

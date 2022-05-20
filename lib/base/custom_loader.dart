@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_deli/Utils/colors.dart';
 import 'package:food_deli/Utils/dimentions.dart';
-import 'package:food_deli/controllers/auth_controller.dart';
-import 'package:get/get.dart';
 
 class CustomLoader extends StatelessWidget {
   const CustomLoader({Key? key}) : super(key: key);

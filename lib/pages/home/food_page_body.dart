@@ -172,7 +172,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 borderRadius: BorderRadius.circular(Dimentions.radius30),
                 image: DecorationImage(
                   // image: AssetImage('assets/image/food0.png'),
-                  image: NetworkImage(AppConstants.uploadURL + popularProduct.img!),
+                  image: NetworkImage(AppConstants.UPLOAD_URL + popularProduct.img!),
                   fit: BoxFit.cover,
                 ),
                 color: index.isEven ? Colors.blue.shade100 : Colors.grey.shade100,
@@ -233,7 +233,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               borderRadius: BorderRadius.circular(Dimentions.radius20),
               color: Colors.white,
               image: DecorationImage(
-                  image: NetworkImage(AppConstants.uploadURL + recommendedProduct.img!), fit: BoxFit.cover),
+                  image: NetworkImage(AppConstants.UPLOAD_URL + recommendedProduct.img!), fit: BoxFit.cover),
             ),
           ),
           // Text Container

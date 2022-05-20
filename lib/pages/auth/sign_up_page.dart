@@ -6,6 +6,7 @@ import 'package:food_deli/base/custom_loader.dart';
 import 'package:food_deli/base/show_custom_snackbar.dart';
 import 'package:food_deli/controllers/auth_controller.dart';
 import 'package:food_deli/models/sign_up_body_model.dart';
+import 'package:food_deli/routes/route_helper.dart';
 import 'package:food_deli/widgets/app_text_field.dart';
 import 'package:food_deli/widgets/large_text.dart';
 import 'package:get/get.dart';
@@ -54,6 +55,7 @@ class SignUpPage extends StatelessWidget {
         authController.registration(signUpBody).then((status) {
           if (status.isSuccess) {
             showCustomSnackBar('Success Registration', color: Colors.green, title: 'Registration');
+            Get.offNamed(RouteHelper.getInitial());
           } else {
             showCustomSnackBar('Fail Registration');
           }

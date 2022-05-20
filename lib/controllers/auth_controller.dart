@@ -21,7 +21,6 @@ class AuthController extends GetxController implements GetxService {
 
     if (response.statusCode == 200) {
       // Success
-      print('from auth_cont Token: ${response.body['token']}');
       authRepo.saveUserToken(response.body['token']);
       responseModel = ResponseModel(true, response.body['token']);
     } else {
@@ -34,8 +33,6 @@ class AuthController extends GetxController implements GetxService {
   }
 
   Future<ResponseModel> login(String email, String password) async {
-    print("Getting token: ${authRepo.getUserToken()}");
-
     _isLoading = true;
     update();
     Response response = await authRepo.login(email, password);
@@ -43,8 +40,8 @@ class AuthController extends GetxController implements GetxService {
 
     if (response.statusCode == 200) {
       // Success
-      print('Backend Token: ${response.body['token']}');
       authRepo.saveUserToken(response.body['token']);
+      print('my token is ${response.body['token']}');
       responseModel = ResponseModel(true, response.body['token']);
     } else {
       // Fail
@@ -58,5 +55,13 @@ class AuthController extends GetxController implements GetxService {
 
   void saveUserNumberAndPassword(String number, String password) {
     authRepo.saveUserNumberAndPassword(number, password);
+  }
+
+  bool userLoggedIn() {
+    return authRepo.userLoggedin();
+  }
+
+  bool clearShearedData() {
+    return authRepo.clearSharedData();
   }
 }

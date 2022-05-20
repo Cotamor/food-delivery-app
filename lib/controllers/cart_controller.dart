@@ -133,7 +133,9 @@ class CartController extends GetxController {
       final quantity = value.quantity;
       total += price! * quantity!;
     });
+
     print('Total Price: $total');
+
     return total;
   }
 
@@ -167,11 +169,8 @@ class CartController extends GetxController {
     update();
   }
 
-  // set setHistory(List<CartModel> items) {
-  //   historyItems = items;
-  //   print('Length of history items: ${historyItems.length}');
-  //   for (var i = 0; i < historyItems.length; i++) {
-  //     _history.putIfAbsent(historyItems[i].product!.id!, () => historyItems[i]);
-  //   }
-  // }
+  void clearCartHistory() {
+    cartRepo.clearCartHistory();
+    update();
+  }
 }

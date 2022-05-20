@@ -14,31 +14,45 @@ class AuthRepo {
   });
 
   Future<Response> registration(SignUpBody singUpBody) async {
-    Response response = await apiClient.postData(AppConstants.registrationURI, singUpBody.toJson());
+    Response response = await apiClient.postData(AppConstants.REGISTRATION_URI, singUpBody.toJson());
     return response;
   }
 
+  bool userLoggedin() {
+    return prefs.containsKey(AppConstants.TOKEN);
+  }
+
   Future<String> getUserToken() async {
-    return prefs.getString(AppConstants.token) ?? 'None';
+    return prefs.getString(AppConstants.TOKEN) ?? 'None';
   }
 
   Future<Response> login(String email, String password) async {
-    Response response = await apiClient.postData(AppConstants.loginURI, {'email': email, 'password': password});
+    Response response = await apiClient.postData(AppConstants.LOGIN_URI, {'email': email, 'password': password});
     return response;
   }
 
   Future<bool> saveUserToken(String token) async {
     apiClient.token = token;
     apiClient.updateHeader(token);
-    return await prefs.setString(AppConstants.token, token);
+    return await prefs.setString(AppConstants.TOKEN, token);
   }
 
   Future<void> saveUserNumberAndPassword(String number, String password) async {
     try {
-      await prefs.setString(AppConstants.phone, number);
-      await prefs.setString(AppConstants.password, password);
+      await prefs.setString(AppConstants.EMAIL, number);
+      await prefs.setString(AppConstants.PASSWORD, password);
     } catch (e) {
       throw (e);
     }
+  }
+
+  bool clearSharedData() {
+    prefs.remove(AppConstants.TOKEN);
+    prefs.remove(AppConstants.EMAIL);
+    prefs.remove(AppConstants.PASSWORD);
+    apiClient.token = '';
+    apiClient.updateHeader('');
+
+    return true;
   }
 }

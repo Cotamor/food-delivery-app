@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
           // theme: ThemeData(
           //   primarySwatch: Colors.blue,
           // ),
-          home: const SignInPage(),
-          // initialRoute: RouteHelper.getSplashPage(),
+          // home: const SignInPage(),
+          initialRoute: RouteHelper.getSplashPage(),
           getPages: RouteHelper.routes,
         );
       });
