@@ -16,17 +16,15 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var emailController = TextEditingController();
+    var phoneController = TextEditingController();
     var passwordController = TextEditingController();
 
     void _login(AuthController authController) {
-      String email = emailController.text.trim();
+      String phone = phoneController.text.trim();
       String password = passwordController.text.trim();
 
-      if (email.isEmpty) {
-        showCustomSnackBar('Fill in your email', title: 'Email');
-      } else if (!GetUtils.isEmail(email)) {
-        showCustomSnackBar('Email is invalid', title: 'Invalid Email');
+      if (phone.isEmpty) {
+        showCustomSnackBar('Fill in your phone', title: 'Phone');
       } else if (password.isEmpty) {
         showCustomSnackBar('Password can not be empty', title: 'Empty Password');
       } else if (password.length < 6) {
@@ -34,7 +32,7 @@ class SignInPage extends StatelessWidget {
       } else {
         showCustomSnackBar('All went well', title: 'Login', color: Colors.green.shade200);
 
-        authController.login(email, password).then((status) {
+        authController.login(phone, password).then((status) {
           if (status.isSuccess) {
             showCustomSnackBar('Success Login', color: Colors.green, title: 'Login');
             Get.offNamed(RouteHelper.getInitial());
@@ -86,11 +84,11 @@ class SignInPage extends StatelessWidget {
                     ),
                     SizedBox(height: Dimentions.height20),
 
-                    // Your email
+                    // Your phone
                     AppTextField(
-                      controller: emailController,
-                      hintText: 'Email',
-                      icon: Icons.mail,
+                      controller: phoneController,
+                      hintText: 'Phone',
+                      icon: Icons.phone,
                     ),
                     SizedBox(height: Dimentions.height20),
 

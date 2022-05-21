@@ -96,21 +96,21 @@ class AccountPage extends StatelessWidget {
                                     AccountWidget(
                                       iconBgColor: AppColors.mainColor,
                                       icon: Icons.person,
-                                      text: userController.userModel.name,
+                                      text: userController.userModel!.name,
                                     ),
                                     SizedBox(height: Dimentions.height20),
                                     // Phone
                                     AccountWidget(
                                       iconBgColor: AppColors.yellowColor,
                                       icon: Icons.phone,
-                                      text: userController.userModel.phone,
+                                      text: userController.userModel!.phone,
                                     ),
                                     SizedBox(height: Dimentions.height20),
                                     // Email
                                     AccountWidget(
                                       iconBgColor: AppColors.yellowColor,
                                       icon: Icons.email,
-                                      text: userController.userModel.email,
+                                      text: userController.userModel!.email,
                                     ),
                                     SizedBox(height: Dimentions.height20),
                                     // Address
