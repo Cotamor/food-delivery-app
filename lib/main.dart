@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_deli/Utils/colors.dart';
 import 'package:food_deli/controllers/cart_controller.dart';
 import 'package:food_deli/controllers/popular_product_controller.dart';
 import 'package:food_deli/controllers/recommended_product_controller.dart';
@@ -23,9 +24,10 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Food Delivery App',
-          // theme: ThemeData(
-          //   primarySwatch: Colors.blue,
-          // ),
+          theme: ThemeData(
+            primaryColor: AppColors.mainColor,
+            fontFamily: 'Roboto',
+          ),
           // home: const SignInPage(),
           initialRoute: RouteHelper.getSplashPage(),
           getPages: RouteHelper.routes,

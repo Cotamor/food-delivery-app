@@ -37,4 +37,9 @@ class LocationRepo {
     apiClient.updateHeader(prefs.getString(AppConstants.TOKEN)!);
     return await prefs.setString(AppConstants.USER_ADDRESS, address);
   }
+
+  Future<Response> getZone(String lat, String lng) async {
+    // return await apiClient.getData('${AppConstants.ZONE_URI}?lat=$lat&lng=$lng');
+    return await apiClient.getData('${AppConstants.ZONE_URI}?lat=$lat&lng=$lng');
+  }
 }

@@ -1,4 +1,5 @@
 import 'package:food_deli/pages/address/add_address_page.dart';
+import 'package:food_deli/pages/address/pick_address_map.dart';
 import 'package:food_deli/pages/auth/sign_in_page.dart';
 import 'package:food_deli/pages/cart/cart_page.dart';
 import 'package:food_deli/pages/cart/cart_history.dart';
@@ -17,6 +18,7 @@ class RouteHelper {
   static const String signInPage = '/sign-in';
   static const String checkoutPage = '/checkout-page';
   static const String addAddress = '/add-address';
+  static const String pickAddressMap = '/pick-address';
 
   static String getSplashPage() => '$splashPage';
   static String getInitial() => '$initial';
@@ -26,6 +28,7 @@ class RouteHelper {
   static String getSignInPage() => '$signInPage';
   static String getCheckoutPage() => '$checkoutPage';
   static String getAddAddressPage() => '$addAddress';
+  static String getPickAddressPage() => '$pickAddressMap';
 
   static List<GetPage> routes = [
     GetPage(
@@ -33,7 +36,11 @@ class RouteHelper {
       page: () => const SplashPage(),
       transition: Transition.zoom,
     ),
-    GetPage(name: initial, page: () => const HomePage()),
+    GetPage(
+      name: initial,
+      page: () => const HomePage(),
+      transition: Transition.zoom,
+    ),
     GetPage(
       name: signInPage,
       page: () => const SignInPage(),
@@ -70,6 +77,15 @@ class RouteHelper {
     GetPage(
       name: addAddress,
       page: () => const AddAddressPage(),
+      transition: Transition.zoom,
+    ),
+    GetPage(
+      name: pickAddressMap,
+      // return all arguments including Page
+      page: () {
+        PickAddressMap _pickAddressMap = Get.arguments;
+        return _pickAddressMap;
+      },
       transition: Transition.zoom,
     ),
   ];

@@ -42,6 +42,15 @@ class LocationController extends GetxController implements GetxService {
   bool get loading => _loading;
   Position get position => _position;
   Position get pickPosition => _pickPosition;
+  // For service zone
+  bool _isLoading = false;
+  bool get isLoading => _isLoading;
+  // wheather the user is in service zone or not
+  bool _inZone = false;
+  bool get inZone => _inZone;
+  // showing and hiding the button as the map loads
+  bool _buttonDisabled = true;
+  bool get buttonDisabled => _buttonDisabled;
 
   void setMapController(GoogleMapController mapController) {
     _mapController = mapController;
@@ -77,6 +86,14 @@ class LocationController extends GetxController implements GetxService {
           );
         }
 
+        ResponseModel _responseModel = await getZone(
+          position.target.latitude.toString(),
+          position.target.longitude.toString(),
+          false,
+        );
+        // If button value is false we are in service area;
+        _buttonDisabled = !_responseModel.isSuccess;
+
         if (_changeAddress) {
           // Talk to server
           String _address = await getAddressFromGeocode(
@@ -90,24 +107,29 @@ class LocationController extends GetxController implements GetxService {
       } catch (e) {
         print(e);
       }
+      _loading = false;
+      update();
+    } else {
+      _updateAddressData = true;
     }
   }
 
   //
   Future<String> getAddressFromGeocode(LatLng latLng) async {
-    String _address = 'Unknown location found';
     Response response = await locationRepo.getAddressFromGeocode(latLng);
+    String _address = 'Unknown location found';
     if (response.body['status'] == 'OK') {
       _address = response.body['results'][0]['formatted_address'].toString();
     } else {
       print('Error getting the google api');
     }
+    update();
     return _address;
   }
 
   late Map<String, dynamic> _getAddress;
   Map get getAddress => _getAddress;
-  AddressModel getUserAdress() {
+  AddressModel getUserAddress() {
     late AddressModel _addressModel;
     // Converting to map using jsonDecode()
     _getAddress = jsonDecode(locationRepo.getUserAddress());
@@ -130,7 +152,9 @@ class LocationController extends GetxController implements GetxService {
     update();
     Response response = await locationRepo.addAddress(addressModel);
     ResponseModel responseModel;
-    print(response.statusCode.toString());
+    print(response.statusCode.toString() + 'hi');
+    print('getAddressList:${response.body['message']}');
+
     if (response.statusCode == 200) {
       await getAddressList();
       String message = response.body['message'];
@@ -163,5 +187,60 @@ class LocationController extends GetxController implements GetxService {
   Future<bool> saveUserAddress(AddressModel addressModel) async {
     String userAddress = jsonEncode(addressModel.toJson());
     return await locationRepo.saveUserAddress(userAddress);
+  }
+
+  void clearAddressList() {
+    _addressList = [];
+    _allAddressList = [];
+    update();
+  }
+
+  String getUserAddressFromLocalStorage() {
+    return locationRepo.getUserAddress();
+  }
+
+  void setAddAddressData() {
+    _position = _pickPosition;
+    _placemark = _pickPlacemark;
+
+    _updateAddressData = false;
+    update();
+  }
+
+  Future<ResponseModel> getZone(String lat, String lng, bool markerLoad) async {
+    if (markerLoad) {
+      _loading = true;
+    } else {
+      _isLoading = true;
+    }
+    update();
+    ResponseModel _responseModel;
+    // await Future.delayed(const Duration(seconds: 2), () {
+    //   _responseModel = ResponseModel(true, 'Success');
+    //   if (markerLoad) {
+    //     _loading = false;
+    //   } else {
+    //     _isLoading = false;
+    //   }
+    //   _inZone = true;
+    // });
+    Response response = await locationRepo.getZone(lat, lng);
+    if (response.statusCode == 200) {
+      _inZone = true;
+      _responseModel = ResponseModel(true, response.body['zone-id'].toString());
+    } else {
+      _inZone = false;
+      _responseModel = ResponseModel(false, response.statusText!);
+    }
+    if (markerLoad) {
+      _loading = false;
+    } else {
+      _isLoading = false;
+    }
+
+    print('StatusCode of getZone():${response.statusCode}');
+    update();
+
+    return _responseModel;
   }
 }

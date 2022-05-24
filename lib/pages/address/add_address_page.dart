@@ -6,8 +6,8 @@ import 'package:food_deli/controllers/auth_controller.dart';
 import 'package:food_deli/controllers/location_controller.dart';
 import 'package:food_deli/controllers/user_controller.dart';
 import 'package:food_deli/models/address_model.dart';
-import 'package:food_deli/models/user_model.dart';
-import 'package:food_deli/widgets/app_icon.dart';
+import 'package:food_deli/pages/address/pick_address_map.dart';
+import 'package:food_deli/routes/route_helper.dart';
 import 'package:food_deli/widgets/app_text_field.dart';
 import 'package:food_deli/widgets/large_text.dart';
 import 'package:get/get.dart';
@@ -21,7 +21,7 @@ class AddAddressPage extends StatefulWidget {
 }
 
 class _AddAddressPageState extends State<AddAddressPage> {
-  TextEditingController _addressController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
   final TextEditingController _contactPersonName = TextEditingController();
   final TextEditingController _contactPersonNumber = TextEditingController();
   late bool _isLogged;
@@ -41,6 +41,14 @@ class _AddAddressPageState extends State<AddAddressPage> {
     if (Get.find<LocationController>().addressList.isEmpty) {
       _initialPosition = const LatLng(45.521563, -122.677433);
     } else {
+      // bug fix
+      if (Get.find<LocationController>().getUserAddressFromLocalStorage() == '') {
+        Get.find<LocationController>().saveUserAddress(
+          Get.find<LocationController>().addressList.last,
+        );
+      }
+
+      Get.find<LocationController>().getUserAddress();
       _cameraPosition = CameraPosition(
           target: LatLng(
         double.parse(Get.find<LocationController>().getAddress['latitude']),
@@ -57,7 +65,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Address Page'),
+        title: const Text('Address Page'),
         backgroundColor: AppColors.mainColor,
       ),
       body: GetBuilder<UserController>(
@@ -67,7 +75,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
             _contactPersonNumber.text = userController.userModel!.phone;
             if (Get.find<LocationController>().addressList.isNotEmpty) {
               // ...
-              _addressController.text = Get.find<LocationController>().getUserAdress().address;
+              _addressController.text = Get.find<LocationController>().getUserAddress().address;
             }
           }
           return GetBuilder<LocationController>(builder: (locationController) {
@@ -94,6 +102,16 @@ class _AddAddressPageState extends State<AddAddressPage> {
                     child: Stack(
                       children: [
                         GoogleMap(
+                          onTap: (latlug) {
+                            Get.toNamed(
+                              RouteHelper.getPickAddressPage(),
+                              arguments: PickAddressMap(
+                                fromSignup: false,
+                                fromAddress: true,
+                                googleMapController: locationController.mapController,
+                              ),
+                            );
+                          },
                           initialCameraPosition: CameraPosition(
                             target: _initialPosition,
                             zoom: 17,
@@ -103,6 +121,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
                           indoorViewEnabled: true,
                           mapToolbarEnabled: false,
                           myLocationEnabled: true,
+                          // When you move around the map with the mouse, this function get called
                           onCameraIdle: () {
                             locationController.updatePosition(_cameraPosition, true);
                           },
@@ -222,7 +241,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
                         );
                         locationController.addAddress(_addressModel).then((value) {
                           if (value.isSuccess) {
-                            Get.back();
+                            Get.toNamed(RouteHelper.getInitial());
                             showCustomSnackBar('Added Successfully', title: 'Address', color: Colors.green);
                           } else {
                             showCustomSnackBar(

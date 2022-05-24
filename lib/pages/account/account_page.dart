@@ -4,6 +4,7 @@ import 'package:food_deli/Utils/dimentions.dart';
 import 'package:food_deli/base/show_custom_snackbar.dart';
 import 'package:food_deli/controllers/auth_controller.dart';
 import 'package:food_deli/controllers/cart_controller.dart';
+import 'package:food_deli/controllers/location_controller.dart';
 import 'package:food_deli/controllers/user_controller.dart';
 import 'package:food_deli/routes/route_helper.dart';
 import 'package:food_deli/widgets/account_widget.dart';
@@ -114,11 +115,28 @@ class AccountPage extends StatelessWidget {
                                     ),
                                     SizedBox(height: Dimentions.height20),
                                     // Address
-                                    const AccountWidget(
-                                      iconBgColor: AppColors.yellowColor,
-                                      icon: Icons.location_on,
-                                      text: 'Chiyoda Tokyo Japan',
-                                    ),
+                                    GetBuilder<LocationController>(builder: (locationController) {
+                                      if (_userLoggedIn && locationController.addressList.isEmpty) {
+                                        return GestureDetector(
+                                          onTap: () => Get.toNamed(RouteHelper.getAddAddressPage()),
+                                          child: const AccountWidget(
+                                            iconBgColor: AppColors.yellowColor,
+                                            icon: Icons.location_on,
+                                            text: 'Fill in your address',
+                                          ),
+                                        );
+                                      } else {
+                                        return GestureDetector(
+                                          onTap: () => Get.toNamed(RouteHelper.getAddAddressPage()),
+                                          child: const AccountWidget(
+                                            iconBgColor: AppColors.yellowColor,
+                                            icon: Icons.location_on,
+                                            text: 'Your address',
+                                          ),
+                                        );
+                                      }
+                                    }),
+
                                     SizedBox(height: Dimentions.height20),
                                     // Messages
                                     const AccountWidget(
@@ -134,9 +152,10 @@ class AccountPage extends StatelessWidget {
                                           Get.find<AuthController>().clearShearedData();
                                           Get.find<CartController>().clear();
                                           Get.find<CartController>().clearCartHistory();
-                                          Get.toNamed(RouteHelper.getSignInPage());
+                                          Get.find<LocationController>().clearAddressList();
+                                          Get.offNamed(RouteHelper.getSignInPage());
                                         } else {
-                                          //
+                                          Get.offNamed(RouteHelper.getSignInPage());
                                           showCustomSnackBar('You logged out', color: Colors.green, title: 'Log Out');
                                         }
                                       },
