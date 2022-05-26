@@ -31,6 +31,7 @@ class ApiClient extends GetConnect implements GetxService {
   Future<Response> getData(String uri, {Map<String, String>? headers}) async {
     try {
       Response response = await get(uri, headers: headers ?? _mainHeaders);
+      print(response.body.toString());
       return response;
     } catch (e) {
       return Response(statusCode: 1, statusText: e.toString());
@@ -38,7 +39,6 @@ class ApiClient extends GetConnect implements GetxService {
   }
 
   Future<Response> postData(String uri, dynamic body) async {
-    print(body.toString() + 'from apiClient.dart');
     try {
       Response response = await post(uri, body, headers: _mainHeaders);
       return response;
