@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_deli/Utils/app_constants.dart';
 import 'package:food_deli/Utils/colors.dart';
-import 'package:food_deli/Utils/dimentions.dart';
+import 'package:food_deli/Utils/dimensions.dart';
 import 'package:food_deli/controllers/cart_controller.dart';
 import 'package:food_deli/controllers/popular_product_controller.dart';
 import 'package:food_deli/controllers/recommended_product_controller.dart';
@@ -37,8 +37,8 @@ class RecommendedFoodDetail extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(Dimentions.radius20),
-                    topRight: Radius.circular(Dimentions.radius20),
+                    topLeft: Radius.circular(Dimensions.radius20),
+                    topRight: Radius.circular(Dimensions.radius20),
                   ),
                   color: Colors.white,
                 ),
@@ -47,7 +47,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                 child: Center(
                   child: LargeText(
                     text: product.name!,
-                    size: Dimentions.font26,
+                    size: Dimensions.font26,
                   ),
                 ),
               ),
@@ -125,7 +125,7 @@ class RecommendedFoodDetail extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: Dimentions.width20),
+                  margin: EdgeInsets.symmetric(horizontal: Dimensions.width20),
                   child: ExpandableTextWidget(text: product.description!),
                 ),
               ],
@@ -141,7 +141,7 @@ class RecommendedFoodDetail extends StatelessWidget {
             children: [
               // + & - button section
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: Dimentions.width20 * 2.5, vertical: Dimentions.height10),
+                padding: EdgeInsets.symmetric(horizontal: Dimensions.width20 * 2.5, vertical: Dimensions.height10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -153,7 +153,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                         icon: Icons.remove,
                         bgColor: AppColors.mainColor,
                         iconColor: Colors.white,
-                        iconSize: Dimentions.iconSize24,
+                        iconSize: Dimensions.iconSize24,
                       ),
                     ),
                     LargeText(
@@ -167,7 +167,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                         icon: Icons.add,
                         bgColor: AppColors.mainColor,
                         iconColor: Colors.white,
-                        iconSize: Dimentions.iconSize24,
+                        iconSize: Dimensions.iconSize24,
                       ),
                     ),
                   ],
@@ -175,27 +175,27 @@ class RecommendedFoodDetail extends StatelessWidget {
               ),
               // Fav and Add to Cart buttons
               Container(
-                height: Dimentions.bottomHeightBar120,
+                height: Dimensions.bottomHeightBar120,
                 padding: EdgeInsets.only(
-                  top: Dimentions.height30,
-                  bottom: Dimentions.height30,
-                  left: Dimentions.width20,
-                  right: Dimentions.width20,
+                  top: Dimensions.height30,
+                  bottom: Dimensions.height30,
+                  left: Dimensions.width20,
+                  right: Dimensions.width20,
                 ),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade300,
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(Dimentions.radius20),
-                    topRight: Radius.circular(Dimentions.radius20),
+                    topLeft: Radius.circular(Dimensions.radius20),
+                    topRight: Radius.circular(Dimensions.radius20),
                   ),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: Dimentions.width20, vertical: Dimentions.height20),
+                      padding: EdgeInsets.symmetric(horizontal: Dimensions.width20, vertical: Dimensions.height20),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(Dimentions.radius20),
+                        borderRadius: BorderRadius.circular(Dimensions.radius20),
                         color: Colors.white,
                       ),
                       child: const Icon(
@@ -209,9 +209,9 @@ class RecommendedFoodDetail extends StatelessWidget {
                         controller.addItem(product);
                       },
                       child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: Dimentions.width20, vertical: Dimentions.height20),
+                        padding: EdgeInsets.symmetric(horizontal: Dimensions.width20, vertical: Dimensions.height20),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(Dimentions.radius20),
+                          borderRadius: BorderRadius.circular(Dimensions.radius20),
                           color: AppColors.mainColor,
                         ),
                         child: LargeText(

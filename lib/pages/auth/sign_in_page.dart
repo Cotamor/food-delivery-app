@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:food_deli/Utils/colors.dart';
-import 'package:food_deli/Utils/dimentions.dart';
+import 'package:food_deli/Utils/dimensions.dart';
 import 'package:food_deli/base/custom_loader.dart';
 import 'package:food_deli/base/show_custom_snackbar.dart';
 import 'package:food_deli/controllers/auth_controller.dart';
@@ -54,35 +54,35 @@ class SignInPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(
-                      height: Dimentions.screenHeight * 0.05,
+                      height: Dimensions.screenHeight * 0.05,
                     ),
                     // App Logo
                     SizedBox(
-                      height: Dimentions.screenHeight * 0.25,
+                      height: Dimensions.screenHeight * 0.25,
                       width: double.maxFinite,
                       child: CircleAvatar(
                         backgroundColor: Colors.white,
-                        radius: Dimentions.height40 * 2,
+                        radius: Dimensions.height40 * 2,
                         // backgroundImage: const AssetImage('assets/image/logo part 1.png'),
                         child: const Image(image: AssetImage('assets/image/logo part 1.png')),
                       ),
                     ),
-                    SizedBox(height: Dimentions.height20),
+                    SizedBox(height: Dimensions.height20),
                     // Welcome
                     Container(
                       width: double.maxFinite,
-                      margin: EdgeInsets.only(left: Dimentions.width20),
+                      margin: EdgeInsets.only(left: Dimensions.width20),
                       child: Text(
                         'Hello',
                         style: TextStyle(
-                          fontSize: Dimentions.font20 * 3 + Dimentions.font20 / 2,
+                          fontSize: Dimensions.font20 * 3 + Dimensions.font20 / 2,
                           fontWeight: FontWeight.bold,
                           color: Colors.black87,
                         ),
                         textAlign: TextAlign.start,
                       ),
                     ),
-                    SizedBox(height: Dimentions.height20),
+                    SizedBox(height: Dimensions.height20),
 
                     // Your phone
                     AppTextField(
@@ -90,7 +90,7 @@ class SignInPage extends StatelessWidget {
                       hintText: 'Phone',
                       icon: Icons.phone,
                     ),
-                    SizedBox(height: Dimentions.height20),
+                    SizedBox(height: Dimensions.height20),
 
                     //Your password
                     AppTextField(
@@ -99,10 +99,10 @@ class SignInPage extends StatelessWidget {
                       icon: Icons.password,
                       isObscure: true,
                     ),
-                    SizedBox(height: Dimentions.height20),
+                    SizedBox(height: Dimensions.height20),
                     // Login Option
                     Container(
-                      margin: EdgeInsets.only(right: Dimentions.width20),
+                      margin: EdgeInsets.only(right: Dimensions.width20),
                       width: double.maxFinite,
                       child: RichText(
                         text: TextSpan(
@@ -111,41 +111,41 @@ class SignInPage extends StatelessWidget {
                               print('Sign up clicked');
                             },
                           text: 'Sign into your account',
-                          style: TextStyle(color: Colors.black54, fontSize: Dimentions.font18),
+                          style: TextStyle(color: Colors.black54, fontSize: Dimensions.font18),
                         ),
                         textAlign: TextAlign.end,
                       ),
                     ),
-                    SizedBox(height: Dimentions.screenHeight * 0.05),
+                    SizedBox(height: Dimensions.screenHeight * 0.05),
                     // Sign up Button
                     GestureDetector(
                       onTap: () {
                         _login(authController);
                       },
                       child: Container(
-                        padding: EdgeInsets.symmetric(vertical: Dimentions.height15),
-                        width: Dimentions.screenWidth / 2,
+                        padding: EdgeInsets.symmetric(vertical: Dimensions.height15),
+                        width: Dimensions.screenWidth / 2,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(Dimentions.radius20),
+                          borderRadius: BorderRadius.circular(Dimensions.radius20),
                           color: AppColors.mainColor,
                         ),
                         child: Center(
                           child: LargeText(
                             text: 'Sign In',
                             color: Colors.white,
-                            size: Dimentions.font26,
+                            size: Dimensions.font26,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(height: Dimentions.screenHeight * 0.05),
+                    SizedBox(height: Dimensions.screenHeight * 0.05),
                     // Login Option
                     RichText(
                       text: TextSpan(
                         text: 'Don\'t have an account? ',
                         style: TextStyle(
                           color: Colors.black54,
-                          fontSize: Dimentions.font16,
+                          fontSize: Dimensions.font16,
                         ),
                         children: [
                           TextSpan(
@@ -156,7 +156,7 @@ class SignInPage extends StatelessWidget {
                             text: 'Create ',
                             style: TextStyle(
                               color: Colors.black54,
-                              fontSize: Dimentions.font16,
+                              fontSize: Dimensions.font16,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
-import 'package:food_deli/Utils/dimentions.dart';
+import 'package:food_deli/Utils/dimensions.dart';
 import 'package:food_deli/controllers/location_controller.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -17,14 +17,14 @@ class LocationDialogue extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextEditingController _controller = TextEditingController();
     return Container(
-      padding: EdgeInsets.all(Dimentions.width10),
+      padding: EdgeInsets.all(Dimensions.width10),
       alignment: Alignment.topCenter,
       child: Material(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(Dimentions.radius15),
+          borderRadius: BorderRadius.circular(Dimensions.radius15),
         ),
         child: SizedBox(
-          width: Dimentions.screenWidth,
+          width: Dimensions.screenWidth,
           // child: const Text('Google map dialogue'),
           child: TypeAheadField(
             textFieldConfiguration: TextFieldConfiguration(
@@ -36,7 +36,7 @@ class LocationDialogue extends StatelessWidget {
               decoration: InputDecoration(
                 hintText: "Search Location",
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(Dimentions.radius20 / 2),
+                  borderRadius: BorderRadius.circular(Dimensions.radius20 / 2),
                   borderSide: const BorderSide(
                     style: BorderStyle.none,
                     width: 0,
@@ -44,7 +44,7 @@ class LocationDialogue extends StatelessWidget {
                 ),
                 hintStyle: Theme.of(context).textTheme.headline2!.copyWith(
                       color: Theme.of(context).disabledColor,
-                      fontSize: Dimentions.font16,
+                      fontSize: Dimensions.font16,
                     ),
               ),
             ),
@@ -54,7 +54,7 @@ class LocationDialogue extends StatelessWidget {
             },
             itemBuilder: (context, Prediction suggestion) {
               return Padding(
-                padding: EdgeInsets.all(Dimentions.width10),
+                padding: EdgeInsets.all(Dimensions.width10),
                 child: Row(
                   children: [
                     const Icon(Icons.location_on),
@@ -65,7 +65,7 @@ class LocationDialogue extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: Theme.of(context).textTheme.headline2!.copyWith(
                               color: Theme.of(context).textTheme.bodyText1!.color,
-                              fontSize: Dimentions.font16,
+                              fontSize: Dimensions.font16,
                             ),
                       ),
                     ),

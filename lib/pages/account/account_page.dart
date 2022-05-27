@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_deli/Utils/colors.dart';
-import 'package:food_deli/Utils/dimentions.dart';
+import 'package:food_deli/Utils/dimensions.dart';
 import 'package:food_deli/base/show_custom_snackbar.dart';
 import 'package:food_deli/controllers/auth_controller.dart';
 import 'package:food_deli/controllers/cart_controller.dart';
@@ -19,8 +19,9 @@ class AccountPage extends StatelessWidget {
   Widget build(BuildContext context) {
     bool _userLoggedIn = Get.find<AuthController>().userLoggedIn();
     if (_userLoggedIn) {
-      print('user has logged in');
       Get.find<UserController>().getUserInfo();
+      Get.find<LocationController>().getAddressList();
+      print('user has logged in');
     }
     return Scaffold(
       appBar: AppBar(
@@ -38,7 +39,7 @@ class AccountPage extends StatelessWidget {
               children: [
                 Container(
                   width: double.infinity,
-                  height: Dimentions.height20 * 10,
+                  height: Dimensions.height20 * 10,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage('assets/image/signintocontinue.png'),
@@ -51,17 +52,17 @@ class AccountPage extends StatelessWidget {
                     Get.toNamed(RouteHelper.getSignInPage());
                   },
                   child: Container(
-                    padding: EdgeInsets.symmetric(vertical: Dimentions.height15),
-                    width: Dimentions.screenWidth / 2,
+                    padding: EdgeInsets.symmetric(vertical: Dimensions.height15),
+                    width: Dimensions.screenWidth / 2,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Dimentions.radius20),
+                      borderRadius: BorderRadius.circular(Dimensions.radius20),
                       color: AppColors.mainColor,
                     ),
                     child: Center(
                       child: LargeText(
                         text: 'Sign In',
                         color: Colors.white,
-                        size: Dimentions.font26,
+                        size: Dimensions.font26,
                       ),
                     ),
                   ),
@@ -75,7 +76,7 @@ class AccountPage extends StatelessWidget {
                         child: CircularProgressIndicator(),
                       )
                     : Container(
-                        margin: EdgeInsets.only(top: Dimentions.height20),
+                        margin: EdgeInsets.only(top: Dimensions.height20),
                         width: double.infinity,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -85,10 +86,10 @@ class AccountPage extends StatelessWidget {
                               icon: Icons.person,
                               bgColor: AppColors.mainColor,
                               iconColor: Colors.white,
-                              size: Dimentions.height15 * 10,
-                              iconSize: Dimentions.height45 + Dimentions.height30,
+                              size: Dimensions.height15 * 10,
+                              iconSize: Dimensions.height45 + Dimensions.height30,
                             ),
-                            SizedBox(height: Dimentions.height20),
+                            SizedBox(height: Dimensions.height20),
                             Expanded(
                               child: SingleChildScrollView(
                                 child: Column(
@@ -99,21 +100,21 @@ class AccountPage extends StatelessWidget {
                                       icon: Icons.person,
                                       text: userController.userModel!.name,
                                     ),
-                                    SizedBox(height: Dimentions.height20),
+                                    SizedBox(height: Dimensions.height20),
                                     // Phone
                                     AccountWidget(
                                       iconBgColor: AppColors.yellowColor,
                                       icon: Icons.phone,
                                       text: userController.userModel!.phone,
                                     ),
-                                    SizedBox(height: Dimentions.height20),
+                                    SizedBox(height: Dimensions.height20),
                                     // Email
                                     AccountWidget(
                                       iconBgColor: AppColors.yellowColor,
                                       icon: Icons.email,
                                       text: userController.userModel!.email,
                                     ),
-                                    SizedBox(height: Dimentions.height20),
+                                    SizedBox(height: Dimensions.height20),
                                     // Address
                                     GetBuilder<LocationController>(builder: (locationController) {
                                       if (_userLoggedIn && locationController.addressList.isEmpty) {
@@ -137,14 +138,14 @@ class AccountPage extends StatelessWidget {
                                       }
                                     }),
 
-                                    SizedBox(height: Dimentions.height20),
+                                    SizedBox(height: Dimensions.height20),
                                     // Messages
                                     const AccountWidget(
                                       iconBgColor: Colors.red,
                                       icon: Icons.message,
                                       text: 'Messages',
                                     ),
-                                    SizedBox(height: Dimentions.height20),
+                                    SizedBox(height: Dimensions.height20),
                                     // LogOut
                                     GestureDetector(
                                       onTap: () {
@@ -165,7 +166,7 @@ class AccountPage extends StatelessWidget {
                                         text: 'Log Out',
                                       ),
                                     ),
-                                    SizedBox(height: Dimentions.height20),
+                                    SizedBox(height: Dimensions.height20),
                                   ],
                                 ),
                               ),

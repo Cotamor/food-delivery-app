@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:food_deli/Utils/dimentions.dart';
+import 'package:food_deli/Utils/dimensions.dart';
 import 'package:food_deli/controllers/popular_product_controller.dart';
 import 'package:food_deli/controllers/recommended_product_controller.dart';
 import 'package:food_deli/routes/route_helper.dart';
@@ -56,11 +56,11 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
           ScaleTransition(
             scale: animation,
             child: Center(
-              child: Image.asset('assets/image/logo part 1.png', width: Dimentions.splashImg),
+              child: Image.asset('assets/image/logo part 1.png', width: Dimensions.splashImg),
             ),
           ),
           Center(
-            child: Image.asset('assets/image/logo part 2.png', width: Dimentions.splashImg),
+            child: Image.asset('assets/image/logo part 2.png', width: Dimensions.splashImg),
           ),
         ],
       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_deli/Utils/colors.dart';
-import 'package:food_deli/Utils/dimentions.dart';
+import 'package:food_deli/Utils/dimensions.dart';
 
 class AppTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -18,10 +18,10 @@ class AppTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: Dimentions.height20),
+      margin: EdgeInsets.symmetric(horizontal: Dimensions.height20),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(Dimentions.radius15),
+        borderRadius: BorderRadius.circular(Dimensions.radius15),
         boxShadow: [
           BoxShadow(
             blurRadius: 3,
@@ -41,15 +41,15 @@ class AppTextField extends StatelessWidget {
             color: AppColors.yellowColor,
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(Dimentions.radius15),
+            borderRadius: BorderRadius.circular(Dimensions.radius15),
             borderSide: const BorderSide(color: Colors.white, width: 1.0),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(Dimentions.radius15),
+            borderRadius: BorderRadius.circular(Dimensions.radius15),
             borderSide: const BorderSide(color: Colors.white, width: 1.0),
           ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(Dimentions.radius15),
+            borderRadius: BorderRadius.circular(Dimensions.radius15),
             borderSide: const BorderSide(color: Colors.white, width: 1.0),
           ),
         ),

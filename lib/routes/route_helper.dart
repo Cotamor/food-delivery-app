@@ -1,8 +1,11 @@
+import 'package:food_deli/models/order_model.dart';
 import 'package:food_deli/pages/address/add_address_page.dart';
 import 'package:food_deli/pages/address/pick_address_map.dart';
 import 'package:food_deli/pages/auth/sign_in_page.dart';
 import 'package:food_deli/pages/cart/cart_page.dart';
 import 'package:food_deli/pages/cart/cart_history.dart';
+import 'package:food_deli/pages/checkout/order_success_page.dart';
+import 'package:food_deli/pages/checkout/payment_page.dart';
 import 'package:food_deli/pages/food/popular_food_detail.dart';
 import 'package:food_deli/pages/food/recommended_food_detail.dart';
 import 'package:food_deli/pages/home/home_page.dart';
@@ -19,6 +22,8 @@ class RouteHelper {
   static const String checkoutPage = '/checkout-page';
   static const String addAddress = '/add-address';
   static const String pickAddressMap = '/pick-address';
+  static const String payment = '/payment';
+  static const String orderSuccess = '/order-successful';
 
   static String getSplashPage() => '$splashPage';
   static String getInitial() => '$initial';
@@ -29,6 +34,8 @@ class RouteHelper {
   static String getCheckoutPage() => '$checkoutPage';
   static String getAddAddressPage() => '$addAddress';
   static String getPickAddressPage() => '$pickAddressMap';
+  static String getPaymentPage(String id, int userId) => '$payment?id=$id&userId=$userId';
+  static String getOrderSuccessPage(String orderId, String status) => '$orderSuccess?id=$orderId&status=$status';
 
   static List<GetPage> routes = [
     GetPage(
@@ -87,6 +94,22 @@ class RouteHelper {
         return _pickAddressMap;
       },
       transition: Transition.zoom,
+    ),
+    GetPage(
+      name: payment,
+      page: () => PaymentPage(
+        orderModel: OrderModel(
+          id: int.parse(Get.parameters['id']!),
+          userId: int.parse(Get.parameters['userId']!),
+        ),
+      ),
+    ),
+    GetPage(
+      name: orderSuccess,
+      page: () => OrderSuccessPage(
+        orderId: Get.parameters['id']!,
+        status: Get.parameters['status'].toString().contains('success') ? 1 : 0,
+      ),
     ),
   ];
 }

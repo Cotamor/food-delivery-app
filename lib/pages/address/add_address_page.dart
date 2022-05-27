@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_deli/Utils/colors.dart';
-import 'package:food_deli/Utils/dimentions.dart';
+import 'package:food_deli/Utils/dimensions.dart';
 import 'package:food_deli/base/show_custom_snackbar.dart';
 import 'package:food_deli/controllers/auth_controller.dart';
 import 'package:food_deli/controllers/location_controller.dart';
@@ -134,7 +134,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
                     ),
                   ),
                   SizedBox(
-                    height: Dimentions.height100 / 2,
+                    height: Dimensions.height100 / 2,
                     child: ListView.builder(
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
@@ -145,11 +145,11 @@ class _AddAddressPageState extends State<AddAddressPage> {
                             locationController.setAddressTypeIndex(index);
                           },
                           child: Container(
-                            margin: EdgeInsets.only(right: Dimentions.width20),
+                            margin: EdgeInsets.only(right: Dimensions.width20),
                             padding:
-                                EdgeInsets.symmetric(horizontal: Dimentions.width20, vertical: Dimentions.height10),
+                                EdgeInsets.symmetric(horizontal: Dimensions.width20, vertical: Dimensions.height10),
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(Dimentions.radius20 / 4),
+                              borderRadius: BorderRadius.circular(Dimensions.radius20 / 4),
                               color: Theme.of(context).cardColor,
                               boxShadow: [
                                 BoxShadow(
@@ -178,26 +178,26 @@ class _AddAddressPageState extends State<AddAddressPage> {
                       },
                     ),
                   ),
-                  SizedBox(height: Dimentions.height20),
+                  SizedBox(height: Dimensions.height20),
                   Padding(
-                    padding: EdgeInsets.only(left: Dimentions.width20),
+                    padding: EdgeInsets.only(left: Dimensions.width20),
                     child: const LargeText(text: 'Delivery Address'),
                   ),
-                  SizedBox(height: Dimentions.height20),
+                  SizedBox(height: Dimensions.height20),
                   AppTextField(controller: _addressController, hintText: 'Your address', icon: Icons.place_outlined),
-                  SizedBox(height: Dimentions.height20),
+                  SizedBox(height: Dimensions.height20),
                   Padding(
-                    padding: EdgeInsets.only(left: Dimentions.width20),
+                    padding: EdgeInsets.only(left: Dimensions.width20),
                     child: const LargeText(text: 'Contact name'),
                   ),
-                  SizedBox(height: Dimentions.height10),
+                  SizedBox(height: Dimensions.height10),
                   AppTextField(controller: _contactPersonName, hintText: 'Your name', icon: Icons.person),
-                  SizedBox(height: Dimentions.height20),
+                  SizedBox(height: Dimensions.height20),
                   Padding(
-                    padding: EdgeInsets.only(left: Dimentions.width20),
+                    padding: EdgeInsets.only(left: Dimensions.width20),
                     child: const LargeText(text: 'Your number'),
                   ),
-                  SizedBox(height: Dimentions.height10),
+                  SizedBox(height: Dimensions.height10),
                   AppTextField(controller: _contactPersonNumber, hintText: 'Your phone', icon: Icons.phone),
                 ],
               ),
@@ -211,18 +211,18 @@ class _AddAddressPageState extends State<AddAddressPage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                height: Dimentions.bottomHeightBar120,
+                height: Dimensions.bottomHeightBar120,
                 padding: EdgeInsets.only(
-                  top: Dimentions.height30,
-                  bottom: Dimentions.height30,
-                  left: Dimentions.width20,
-                  right: Dimentions.width20,
+                  top: Dimensions.height30,
+                  bottom: Dimensions.height30,
+                  left: Dimensions.width20,
+                  right: Dimensions.width20,
                 ),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade300,
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(Dimentions.radius20),
-                    topRight: Radius.circular(Dimentions.radius20),
+                    topLeft: Radius.circular(Dimensions.radius20),
+                    topRight: Radius.circular(Dimensions.radius20),
                   ),
                 ),
                 child: Row(
@@ -252,9 +252,9 @@ class _AddAddressPageState extends State<AddAddressPage> {
                         });
                       },
                       child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: Dimentions.width20, vertical: Dimentions.height20),
+                        padding: EdgeInsets.symmetric(horizontal: Dimensions.width20, vertical: Dimensions.height20),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(Dimentions.radius20),
+                          borderRadius: BorderRadius.circular(Dimensions.radius20),
                           color: AppColors.mainColor,
                         ),
                         child: const LargeText(

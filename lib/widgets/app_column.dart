@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_deli/Utils/colors.dart';
-import 'package:food_deli/Utils/dimentions.dart';
+import 'package:food_deli/Utils/dimensions.dart';
 import 'package:food_deli/widgets/icon_text.dart';
 import 'package:food_deli/widgets/large_text.dart';
 import 'package:food_deli/widgets/small_text.dart';
@@ -21,10 +21,10 @@ class AppColumn extends StatelessWidget {
         // Title Section
         LargeText(
           text: title,
-          size: Dimentions.font20,
+          size: Dimensions.font20,
         ),
         // Rating Star Section
-        SizedBox(height: Dimentions.height10),
+        SizedBox(height: Dimensions.height10),
         Row(
           children: [
             Wrap(
@@ -50,7 +50,7 @@ class AppColumn extends StatelessWidget {
           ],
         ),
         // Info Section
-        SizedBox(height: Dimentions.height20),
+        SizedBox(height: Dimensions.height20),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: const [

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_deli/Utils/colors.dart';
-import 'package:food_deli/Utils/dimentions.dart';
+import 'package:food_deli/Utils/dimensions.dart';
 
 class LargeText extends StatelessWidget {
   final String text;
@@ -23,7 +23,7 @@ class LargeText extends StatelessWidget {
       overflow: overflow,
       style: TextStyle(
         color: color,
-        fontSize: size == 0 ? Dimentions.font20 : size,
+        fontSize: size == 0 ? Dimensions.font20 : size,
         fontWeight: FontWeight.w500,
         fontFamily: 'Roboto',
       ),

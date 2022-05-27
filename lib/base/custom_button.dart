@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_deli/Utils/colors.dart';
-import 'package:food_deli/Utils/dimentions.dart';
+import 'package:food_deli/Utils/dimensions.dart';
 
 class CustomButton extends StatelessWidget {
   final VoidCallback? onPressed;
@@ -35,8 +35,8 @@ class CustomButton extends StatelessWidget {
               ? Colors.transparent
               : AppColors.mainColor,
       minimumSize: Size(
-        width != null ? width! : Dimentions.screenWidth,
-        height != null ? height! : Dimentions.height100 / 2,
+        width != null ? width! : Dimensions.screenWidth,
+        height != null ? height! : Dimensions.height100 / 2,
       ),
       padding: EdgeInsets.zero,
       shape: RoundedRectangleBorder(
@@ -45,8 +45,8 @@ class CustomButton extends StatelessWidget {
     );
     return Center(
       child: SizedBox(
-        width: width ?? Dimentions.screenWidth,
-        height: height ?? Dimentions.height100 / 2,
+        width: width ?? Dimensions.screenWidth,
+        height: height ?? Dimensions.height100 / 2,
         child: TextButton(
           onPressed: onPressed,
           style: _flatButton,
@@ -55,7 +55,7 @@ class CustomButton extends StatelessWidget {
             children: [
               icon != null
                   ? Padding(
-                      padding: EdgeInsets.only(right: Dimentions.width10),
+                      padding: EdgeInsets.only(right: Dimensions.width10),
                       child: Icon(
                         icon,
                         color: transparent ? AppColors.mainColor : Theme.of(context).cardColor,
@@ -65,7 +65,7 @@ class CustomButton extends StatelessWidget {
               Text(
                 buttonText,
                 style: TextStyle(
-                  fontSize: fontSize ?? Dimentions.font16,
+                  fontSize: fontSize ?? Dimensions.font16,
                   color: transparent ? AppColors.mainColor : Theme.of(context).cardColor,
                 ),
               ),

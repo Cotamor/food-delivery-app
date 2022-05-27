@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_deli/Utils/dimentions.dart';
+import 'package:food_deli/Utils/dimensions.dart';
 import 'package:food_deli/widgets/app_icon.dart';
 import 'package:food_deli/widgets/large_text.dart';
 
@@ -22,18 +22,18 @@ class AccountWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // color: Colors.white,
-      padding: EdgeInsets.symmetric(horizontal: Dimentions.width20, vertical: Dimentions.height10),
+      padding: EdgeInsets.symmetric(horizontal: Dimensions.width20, vertical: Dimensions.height10),
       child: Row(
         children: [
           AppIcon(
             icon: icon,
             bgColor: iconBgColor,
             iconColor: Colors.white,
-            size: Dimentions.height10 * 5,
-            iconSize: Dimentions.height10 * 5 / 2,
+            size: Dimensions.height10 * 5,
+            iconSize: Dimensions.height10 * 5 / 2,
           ),
           SizedBox(
-            width: Dimentions.width20,
+            width: Dimensions.width20,
           ),
           LargeText(
             text: text,
@@ -42,7 +42,7 @@ class AccountWidget extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(Dimentions.radius15),
+        borderRadius: BorderRadius.circular(Dimensions.radius15),
         boxShadow: [
           BoxShadow(
             blurRadius: 2,

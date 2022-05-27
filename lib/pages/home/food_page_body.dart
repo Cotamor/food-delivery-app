@@ -2,7 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:food_deli/Utils/app_constants.dart';
 import 'package:food_deli/Utils/colors.dart';
-import 'package:food_deli/Utils/dimentions.dart';
+import 'package:food_deli/Utils/dimensions.dart';
 import 'package:food_deli/controllers/popular_product_controller.dart';
 import 'package:food_deli/controllers/recommended_product_controller.dart';
 import 'package:food_deli/models/products_model.dart';
@@ -24,7 +24,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   PageController pageController = PageController(viewportFraction: 0.85);
   var _currentPageValue = 0.0;
   final double _scaleFactor = 0.8;
-  final double _height = Dimentions.pageViewContainer;
+  final double _height = Dimensions.pageViewContainer;
 
   @override
   void initState() {
@@ -51,7 +51,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         GetBuilder<PopularProductController>(builder: (popularProducts) {
           return popularProducts.isLoaded
               ? SizedBox(
-                  height: Dimentions.pageView,
+                  height: Dimensions.pageView,
                   // color: Colors.green.shade100,
                   child: PageView.builder(
                     controller: pageController,
@@ -62,7 +62,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   ),
                 )
               : SizedBox(
-                  height: Dimentions.pageView,
+                  height: Dimensions.pageView,
                   child: const Center(
                     child: CircularProgressIndicator(
                       color: AppColors.mainColor,
@@ -84,14 +84,14 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           );
         }),
         // Recommended Title
-        SizedBox(height: Dimentions.height30),
+        SizedBox(height: Dimensions.height30),
         Container(
-          margin: EdgeInsets.only(left: Dimentions.width30),
+          margin: EdgeInsets.only(left: Dimensions.width30),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               const LargeText(text: 'Recommended'),
-              SizedBox(width: Dimentions.width10),
+              SizedBox(width: Dimensions.width10),
               Container(
                 margin: const EdgeInsets.only(bottom: 3),
                 child: const LargeText(
@@ -99,7 +99,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   color: Colors.black26,
                 ),
               ),
-              SizedBox(width: Dimentions.width10),
+              SizedBox(width: Dimensions.width10),
               Container(
                 margin: const EdgeInsets.only(bottom: 2),
                 child: const SmallText(text: 'food catering'),
@@ -124,7 +124,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   },
                 )
               : SizedBox(
-                  height: Dimentions.pageView,
+                  height: Dimensions.pageView,
                   child: const Center(
                     child: CircularProgressIndicator(
                       color: AppColors.mainColor,
@@ -166,10 +166,10 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               Get.toNamed(RouteHelper.getPopularFood(index, 'home'));
             },
             child: Container(
-              height: Dimentions.pageViewContainer,
-              margin: EdgeInsets.only(left: Dimentions.width10, right: Dimentions.width10),
+              height: Dimensions.pageViewContainer,
+              margin: EdgeInsets.only(left: Dimensions.width10, right: Dimensions.width10),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimentions.radius30),
+                borderRadius: BorderRadius.circular(Dimensions.radius30),
                 image: DecorationImage(
                   // image: AssetImage('assets/image/food0.png'),
                   image: NetworkImage(AppConstants.UPLOAD_URL + popularProduct.img!),
@@ -182,14 +182,14 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: Dimentions.pageViewTextContainer,
+              height: Dimensions.pageViewTextContainer,
               margin: EdgeInsets.only(
-                left: Dimentions.width30,
-                right: Dimentions.width30,
-                bottom: Dimentions.height30,
+                left: Dimensions.width30,
+                right: Dimensions.width30,
+                bottom: Dimensions.height30,
               ),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimentions.radius20),
+                borderRadius: BorderRadius.circular(Dimensions.radius20),
                 color: Colors.white,
                 boxShadow: const [
                   BoxShadow(
@@ -209,7 +209,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               ),
               child: Container(
                 width: double.maxFinite,
-                padding: EdgeInsets.symmetric(horizontal: Dimentions.height20, vertical: Dimentions.height10),
+                padding: EdgeInsets.symmetric(horizontal: Dimensions.height20, vertical: Dimensions.height10),
                 // height: double.maxFinite,
                 child: AppColumn(title: popularProduct.name!),
               ),
@@ -222,15 +222,15 @@ class _FoodPageBodyState extends State<FoodPageBody> {
 
   Widget _buildListItem(int index, ProductModel recommendedProduct) {
     return Container(
-      margin: EdgeInsets.only(left: Dimentions.width20, right: Dimentions.width20, bottom: Dimentions.height10),
+      margin: EdgeInsets.only(left: Dimensions.width20, right: Dimensions.width20, bottom: Dimensions.height10),
       child: Row(
         children: [
           // Image Section
           Container(
-            width: Dimentions.listViewImgSize,
-            height: Dimentions.listViewImgSize,
+            width: Dimensions.listViewImgSize,
+            height: Dimensions.listViewImgSize,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(Dimentions.radius20),
+              borderRadius: BorderRadius.circular(Dimensions.radius20),
               color: Colors.white,
               image: DecorationImage(
                   image: NetworkImage(AppConstants.UPLOAD_URL + recommendedProduct.img!), fit: BoxFit.cover),
@@ -239,31 +239,31 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           // Text Container
           Expanded(
             child: Container(
-              height: Dimentions.listViewTextContSize,
+              height: Dimensions.listViewTextContSize,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(Dimentions.radius20),
-                  bottomRight: Radius.circular(Dimentions.radius20),
+                  topRight: Radius.circular(Dimensions.radius20),
+                  bottomRight: Radius.circular(Dimensions.radius20),
                 ),
                 color: Colors.green.shade100,
               ),
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: Dimentions.width10),
+                padding: EdgeInsets.symmetric(horizontal: Dimensions.width10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     LargeText(
                       text: recommendedProduct.name!,
-                      size: Dimentions.font18,
+                      size: Dimensions.font18,
                     ),
-                    SizedBox(height: Dimentions.height10),
+                    SizedBox(height: Dimensions.height10),
                     SmallText(
                       text: recommendedProduct.description!,
                       overflow: TextOverflow.ellipsis,
                     ),
                     // Info Section
-                    SizedBox(height: Dimentions.height10),
+                    SizedBox(height: Dimensions.height10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [

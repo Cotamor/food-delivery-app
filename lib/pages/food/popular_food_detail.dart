@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_deli/Utils/app_constants.dart';
 import 'package:food_deli/Utils/colors.dart';
-import 'package:food_deli/Utils/dimentions.dart';
+import 'package:food_deli/Utils/dimensions.dart';
 import 'package:food_deli/controllers/cart_controller.dart';
 import 'package:food_deli/controllers/popular_product_controller.dart';
 import 'package:food_deli/models/products_model.dart';
@@ -35,7 +35,7 @@ class PopularFoodDetail extends StatelessWidget {
             right: 0,
             child: Container(
               width: double.maxFinite,
-              height: Dimentions.popularFoodImgSize,
+              height: Dimensions.popularFoodImgSize,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: NetworkImage(AppConstants.UPLOAD_URL + product.img!),
@@ -47,9 +47,9 @@ class PopularFoodDetail extends StatelessWidget {
           ),
           // Navigations Top
           Positioned(
-            left: Dimentions.width20,
-            right: Dimentions.width20,
-            top: Dimentions.height45,
+            left: Dimensions.width20,
+            right: Dimensions.width20,
+            top: Dimensions.height45,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -111,17 +111,17 @@ class PopularFoodDetail extends StatelessWidget {
             left: 0,
             right: 0,
             bottom: 0,
-            top: Dimentions.popularFoodImgSize - 20,
+            top: Dimensions.popularFoodImgSize - 20,
             child: Container(
               padding: EdgeInsets.only(
-                left: Dimentions.width20,
-                right: Dimentions.width20,
-                top: Dimentions.height20,
+                left: Dimensions.width20,
+                right: Dimensions.width20,
+                top: Dimensions.height20,
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(Dimentions.radius20),
-                  topRight: Radius.circular(Dimentions.radius20),
+                  topLeft: Radius.circular(Dimensions.radius20),
+                  topRight: Radius.circular(Dimensions.radius20),
                 ),
                 color: Colors.white,
               ),
@@ -129,9 +129,9 @@ class PopularFoodDetail extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AppColumn(title: product.name!),
-                  SizedBox(height: Dimentions.height20),
+                  SizedBox(height: Dimensions.height20),
                   const LargeText(text: 'Introduce'),
-                  SizedBox(height: Dimentions.height20),
+                  SizedBox(height: Dimensions.height20),
                   // Description Section(ExpandableTextWidget)
                   Expanded(
                     child: SingleChildScrollView(
@@ -146,27 +146,27 @@ class PopularFoodDetail extends StatelessWidget {
       ),
       bottomNavigationBar: GetBuilder<PopularProductController>(builder: (popularProduct) {
         return Container(
-          height: Dimentions.bottomHeightBar120,
+          height: Dimensions.bottomHeightBar120,
           padding: EdgeInsets.only(
-            top: Dimentions.height30,
-            bottom: Dimentions.height30,
-            left: Dimentions.width20,
-            right: Dimentions.width20,
+            top: Dimensions.height30,
+            bottom: Dimensions.height30,
+            left: Dimensions.width20,
+            right: Dimensions.width20,
           ),
           decoration: BoxDecoration(
             color: Colors.pink.shade100,
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(Dimentions.radius20),
-              topRight: Radius.circular(Dimentions.radius20),
+              topLeft: Radius.circular(Dimensions.radius20),
+              topRight: Radius.circular(Dimensions.radius20),
             ),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                padding: EdgeInsets.symmetric(horizontal: Dimentions.width20, vertical: Dimentions.height20),
+                padding: EdgeInsets.symmetric(horizontal: Dimensions.width20, vertical: Dimensions.height20),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimentions.radius20),
+                  borderRadius: BorderRadius.circular(Dimensions.radius20),
                   color: Colors.white,
                 ),
                 // Bottom Nav(+ & - button)
@@ -181,9 +181,9 @@ class PopularFoodDetail extends StatelessWidget {
                         color: AppColors.signColor,
                       ),
                     ),
-                    SizedBox(width: Dimentions.width10 / 2),
+                    SizedBox(width: Dimensions.width10 / 2),
                     LargeText(text: popularProduct.inCartItems.toString()),
-                    SizedBox(width: Dimentions.width10 / 2),
+                    SizedBox(width: Dimensions.width10 / 2),
                     GestureDetector(
                       onTap: () {
                         popularProduct.setQuantity(true);
@@ -202,9 +202,9 @@ class PopularFoodDetail extends StatelessWidget {
                   popularProduct.addItem(product);
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: Dimentions.width20, vertical: Dimentions.height20),
+                  padding: EdgeInsets.symmetric(horizontal: Dimensions.width20, vertical: Dimensions.height20),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(Dimentions.radius20),
+                    borderRadius: BorderRadius.circular(Dimensions.radius20),
                     color: AppColors.mainColor,
                   ),
                   child: LargeText(

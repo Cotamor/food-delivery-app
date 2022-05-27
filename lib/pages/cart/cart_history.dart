@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:food_deli/Utils/app_constants.dart';
 import 'package:food_deli/Utils/colors.dart';
-import 'package:food_deli/Utils/dimentions.dart';
+import 'package:food_deli/Utils/dimensions.dart';
 import 'package:food_deli/base/no_data_page.dart';
 import 'package:food_deli/controllers/cart_controller.dart';
 import 'package:food_deli/controllers/popular_product_controller.dart';
@@ -64,10 +64,10 @@ class CartHistory extends StatelessWidget {
         children: [
           // Top title bar and Navigation
           Container(
-            height: Dimentions.height100,
+            height: Dimensions.height100,
             color: AppColors.mainColor,
             width: double.maxFinite,
-            padding: EdgeInsets.only(top: Dimentions.height45, right: Dimentions.width20, left: Dimentions.width20),
+            padding: EdgeInsets.only(top: Dimensions.height45, right: Dimensions.width20, left: Dimensions.width20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
@@ -93,9 +93,9 @@ class CartHistory extends StatelessWidget {
               : Expanded(
                   child: Container(
                     margin: EdgeInsets.only(
-                      top: Dimentions.height20,
-                      right: Dimentions.width20,
-                      left: Dimentions.width20,
+                      top: Dimensions.height20,
+                      right: Dimensions.width20,
+                      left: Dimensions.width20,
                     ),
                     // color: Colors.red.shade100,
                     child: MediaQuery.removePadding(
@@ -106,13 +106,13 @@ class CartHistory extends StatelessWidget {
                           for (var i = 0; i < dateAndNumItemsPerOrder.length; i++)
                             Container(
                               // color: Colors.blue.shade100,
-                              height: Dimentions.height30 * 4,
+                              height: Dimensions.height30 * 4,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   timeWidget(listCounter),
                                   // LargeText(text: cartHistoryList[listCounter].time!),
-                                  SizedBox(height: Dimentions.height10),
+                                  SizedBox(height: Dimensions.height10),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
@@ -124,11 +124,11 @@ class CartHistory extends StatelessWidget {
                                           }
                                           return index <= 2
                                               ? Container(
-                                                  width: Dimentions.width20 * 4,
-                                                  height: Dimentions.height20 * 4,
-                                                  margin: EdgeInsets.only(right: Dimentions.width10),
+                                                  width: Dimensions.width20 * 4,
+                                                  height: Dimensions.height20 * 4,
+                                                  margin: EdgeInsets.only(right: Dimensions.width10),
                                                   decoration: BoxDecoration(
-                                                    borderRadius: BorderRadius.circular(Dimentions.radius15),
+                                                    borderRadius: BorderRadius.circular(Dimensions.radius15),
                                                     image: DecorationImage(
                                                         image: NetworkImage(
                                                           AppConstants.UPLOAD_URL +
@@ -142,7 +142,7 @@ class CartHistory extends StatelessWidget {
                                       ),
                                       SizedBox(
                                         // color: Colors.green.shade100,
-                                        height: Dimentions.height40 * 2,
+                                        height: Dimensions.height40 * 2,
                                         child: Column(
                                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                           crossAxisAlignment: CrossAxisAlignment.end,
@@ -174,10 +174,10 @@ class CartHistory extends StatelessWidget {
                                               },
                                               child: Container(
                                                 padding: EdgeInsets.symmetric(
-                                                    vertical: Dimentions.height10 / 2, horizontal: Dimentions.width10),
+                                                    vertical: Dimensions.height10 / 2, horizontal: Dimensions.width10),
                                                 decoration: BoxDecoration(
                                                   border: Border.all(width: 1, color: AppColors.mainColor),
-                                                  borderRadius: BorderRadius.circular(Dimentions.radius15 / 3),
+                                                  borderRadius: BorderRadius.circular(Dimensions.radius15 / 3),
                                                 ),
                                                 child: const SmallText(text: 'one more', color: AppColors.mainColor),
                                               ),
@@ -189,7 +189,7 @@ class CartHistory extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              margin: EdgeInsets.only(bottom: Dimentions.height20),
+                              margin: EdgeInsets.only(bottom: Dimensions.height20),
                             )
                         ],
                       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_deli/Utils/colors.dart';
-import 'package:food_deli/Utils/dimentions.dart';
+import 'package:food_deli/Utils/dimensions.dart';
 import 'package:food_deli/base/custom_button.dart';
 import 'package:food_deli/controllers/location_controller.dart';
 import 'package:food_deli/pages/address/widgets/search_location_dialogue_page.dart';
@@ -76,26 +76,26 @@ class _PickAddressMapState extends State<PickAddressMap> {
                   child: !locationController.loading
                       ? Image.asset(
                           'assets/image/pick_marker.png',
-                          width: Dimentions.width100 / 2,
-                          height: Dimentions.height100 / 2,
+                          width: Dimensions.width100 / 2,
+                          height: Dimensions.height100 / 2,
                         )
                       : const CircularProgressIndicator(),
                 ),
                 // Top Address TextBox
                 Positioned(
-                  top: Dimentions.height45,
-                  right: Dimentions.width20,
-                  left: Dimentions.width20,
+                  top: Dimensions.height45,
+                  right: Dimensions.width20,
+                  left: Dimensions.width20,
                   child: InkWell(
                     onTap: () => Get.dialog(
                       LocationDialogue(mapController: _mapController),
                     ),
                     child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: Dimentions.width10),
-                      height: Dimentions.height100 / 2,
+                      padding: EdgeInsets.symmetric(horizontal: Dimensions.width10),
+                      height: Dimensions.height100 / 2,
                       decoration: BoxDecoration(
                         color: Theme.of(context).primaryColor,
-                        borderRadius: BorderRadius.circular(Dimentions.radius20 / 2),
+                        borderRadius: BorderRadius.circular(Dimensions.radius20 / 2),
                       ),
                       child: Row(
                         children: [
@@ -108,13 +108,13 @@ class _PickAddressMapState extends State<PickAddressMap> {
                               '${locationController.pickPlacemark.name}',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: Dimentions.font16,
+                                fontSize: Dimensions.font16,
                               ),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
-                          SizedBox(width: Dimentions.width10),
+                          SizedBox(width: Dimensions.width10),
                           const Icon(Icons.search, size: 25, color: AppColors.yellowColor),
                         ],
                       ),
@@ -124,8 +124,8 @@ class _PickAddressMapState extends State<PickAddressMap> {
                 // Bottom Save Button
                 Positioned(
                   bottom: 80,
-                  right: Dimentions.width20,
-                  left: Dimentions.width20,
+                  right: Dimensions.width20,
+                  left: Dimensions.width20,
                   child: locationController.isLoading
                       ? const Center(
                           child: CircularProgressIndicator(),

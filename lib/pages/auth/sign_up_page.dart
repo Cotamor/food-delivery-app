@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:food_deli/Utils/colors.dart';
-import 'package:food_deli/Utils/dimentions.dart';
+import 'package:food_deli/Utils/dimensions.dart';
 import 'package:food_deli/base/custom_loader.dart';
 import 'package:food_deli/base/show_custom_snackbar.dart';
 import 'package:food_deli/controllers/auth_controller.dart';
@@ -74,19 +74,19 @@ class SignUpPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(
-                        height: Dimentions.screenHeight * 0.05,
+                        height: Dimensions.screenHeight * 0.05,
                       ),
                       // Avatar Image
                       SizedBox(
-                        height: Dimentions.screenHeight * 0.25,
+                        height: Dimensions.screenHeight * 0.25,
                         width: double.maxFinite,
                         child: CircleAvatar(
                           backgroundColor: Colors.white,
-                          radius: Dimentions.height40 * 2,
+                          radius: Dimensions.height40 * 2,
                           child: const Image(image: AssetImage('assets/image/logo part 1.png')),
                         ),
                       ),
-                      SizedBox(height: Dimentions.height20),
+                      SizedBox(height: Dimensions.height20),
 
                       // Your email
                       AppTextField(
@@ -94,7 +94,7 @@ class SignUpPage extends StatelessWidget {
                         hintText: 'Email',
                         icon: Icons.mail,
                       ),
-                      SizedBox(height: Dimentions.height20),
+                      SizedBox(height: Dimensions.height20),
                       // Your password
                       AppTextField(
                         controller: passwordController,
@@ -102,43 +102,43 @@ class SignUpPage extends StatelessWidget {
                         icon: Icons.password,
                         isObscure: true,
                       ),
-                      SizedBox(height: Dimentions.height20),
+                      SizedBox(height: Dimensions.height20),
                       //Your name
                       AppTextField(
                         controller: nameController,
                         hintText: 'Name',
                         icon: Icons.edit,
                       ),
-                      SizedBox(height: Dimentions.height20),
+                      SizedBox(height: Dimensions.height20),
                       // Your phone
                       AppTextField(
                         controller: phoneController,
                         hintText: 'Phone',
                         icon: Icons.phone,
                       ),
-                      SizedBox(height: Dimentions.height20),
+                      SizedBox(height: Dimensions.height20),
                       // Sign up Button
                       GestureDetector(
                         onTap: () {
                           _registration(_authController);
                         },
                         child: Container(
-                          padding: EdgeInsets.symmetric(vertical: Dimentions.height15),
-                          width: Dimentions.screenWidth / 2,
+                          padding: EdgeInsets.symmetric(vertical: Dimensions.height15),
+                          width: Dimensions.screenWidth / 2,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(Dimentions.radius20),
+                            borderRadius: BorderRadius.circular(Dimensions.radius20),
                             color: AppColors.mainColor,
                           ),
                           child: Center(
                             child: LargeText(
                               text: 'Sign Up',
                               color: Colors.white,
-                              size: Dimentions.font26,
+                              size: Dimensions.font26,
                             ),
                           ),
                         ),
                       ),
-                      SizedBox(height: Dimentions.height10),
+                      SizedBox(height: Dimensions.height10),
                       // Login Option
                       RichText(
                         text: TextSpan(
@@ -146,18 +146,18 @@ class SignUpPage extends StatelessWidget {
                           text: 'Already have an account?',
                           style: TextStyle(
                             color: Colors.black54,
-                            fontSize: Dimentions.font16,
+                            fontSize: Dimensions.font16,
                           ),
                         ),
                       ),
-                      SizedBox(height: Dimentions.screenHeight * 0.03),
+                      SizedBox(height: Dimensions.screenHeight * 0.03),
                       // Other methods
                       RichText(
                         text: TextSpan(
                           text: 'Sign up using one of the following methods',
                           style: TextStyle(
                             color: Colors.black54,
-                            fontSize: Dimentions.font16,
+                            fontSize: Dimensions.font16,
                           ),
                         ),
                       ),
@@ -167,7 +167,7 @@ class SignUpPage extends StatelessWidget {
                           (index) => Padding(
                             padding: const EdgeInsets.all(12.0),
                             child: CircleAvatar(
-                              radius: Dimentions.radius20,
+                              radius: Dimensions.radius20,
                               backgroundImage: AssetImage('assets/image/${signUpImages[index]}'),
                               // child: Image.asset(
                               //   'assets/image/${signUpImages[index]}',

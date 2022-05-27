@@ -24,10 +24,10 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Food Delivery App',
-          theme: ThemeData(
-            primaryColor: AppColors.mainColor,
-            fontFamily: 'Roboto',
-          ),
+          // theme: ThemeData(
+          //   primaryColor: AppColors.mainColor,
+          //   fontFamily: 'Roboto',
+          // ),
           // home: const SignInPage(),
           initialRoute: RouteHelper.getSplashPage(),
           getPages: RouteHelper.routes,
